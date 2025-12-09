@@ -1,0 +1,8 @@
+xcuserdata/
+DerivedData/
+build/
+*.xcworkspace/
+.DS_Store
+.claude/
+y
+y.pub
