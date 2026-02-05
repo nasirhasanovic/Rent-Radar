@@ -51,4 +51,4 @@ Track bookings, expenses, and income across multiple properties and platforms â€
 
 ## License
 
-This project is for personal/portfolio use.
+All rights reserved. See [LICENSE](LICENSE) for details.
