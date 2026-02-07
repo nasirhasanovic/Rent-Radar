@@ -48,10 +48,10 @@ final class SignUpViewModel {
 
     var stepLabel: String {
         switch currentStep {
-        case 1: return "Account"
-        case 2: return "Personal Info"
-        case 3: return "Security"
-        case 4: return "Properties"
+        case 1: return String(localized: "Account")
+        case 2: return String(localized: "Personal Info")
+        case 3: return String(localized: "Security")
+        case 4: return String(localized: "Properties")
         default: return ""
         }
     }
@@ -114,10 +114,10 @@ final class SignUpViewModel {
     var strengthLabel: String {
         switch passwordStrength {
         case 0: return ""
-        case 1: return "Weak"
-        case 2: return "Fair"
-        case 3: return "Good"
-        case 4: return "Strong password"
+        case 1: return String(localized: "Weak")
+        case 2: return String(localized: "Fair")
+        case 3: return String(localized: "Good")
+        case 4: return String(localized: "Strong password")
         default: return ""
         }
     }
@@ -225,17 +225,17 @@ enum RentalManagementType: String, CaseIterable {
 
     var title: String {
         switch self {
-        case .shortTerm: return "Short-term Rentals"
-        case .longTerm: return "Long-term Rentals"
-        case .both: return "Both Types"
+        case .shortTerm: return String(localized: "Short-term Rentals")
+        case .longTerm: return String(localized: "Long-term Rentals")
+        case .both: return String(localized: "Both Types")
         }
     }
 
     var description: String {
         switch self {
-        case .shortTerm: return "Vacation rentals, Airbnb, VRBO, and nightly stays"
-        case .longTerm: return "Monthly tenants, leases, and traditional rentals"
-        case .both: return "I manage a mix of short and long-term rentals"
+        case .shortTerm: return String(localized: "Vacation rentals, Airbnb, VRBO, and nightly stays")
+        case .longTerm: return String(localized: "Monthly tenants, leases, and traditional rentals")
+        case .both: return String(localized: "I manage a mix of short and long-term rentals")
         }
     }
 
@@ -257,8 +257,8 @@ enum RentalManagementType: String, CaseIterable {
 
     var chips: [String] {
         switch self {
-        case .shortTerm: return ["Airbnb", "Booking.com", "VRBO", "Direct"]
-        case .longTerm: return ["Monthly", "Annual Lease"]
+        case .shortTerm: return ["Airbnb", "Booking.com", "VRBO", String(localized: "Direct")]
+        case .longTerm: return [String(localized: "Monthly"), String(localized: "Annual Lease")]
         case .both: return []
         }
     }

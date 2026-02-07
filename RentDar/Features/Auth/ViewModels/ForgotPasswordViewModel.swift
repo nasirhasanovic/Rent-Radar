@@ -8,10 +8,10 @@ enum ForgotPasswordStep: Int, CaseIterable {
 
     var title: String {
         switch self {
-        case .enterEmail: return "Email"
-        case .verifyCode: return "Verification"
-        case .newPassword: return "Security"
-        case .success: return "Complete"
+        case .enterEmail: return String(localized: "Email")
+        case .verifyCode: return String(localized: "Verification")
+        case .newPassword: return String(localized: "Security")
+        case .success: return String(localized: "Complete")
         }
     }
 }
@@ -63,10 +63,10 @@ final class ForgotPasswordViewModel {
     var passwordStrength: String {
         switch passwordStrengthLevel {
         case 0: return ""
-        case 1: return "Weak"
-        case 2: return "Fair"
-        case 3: return "Good"
-        case 4: return "Strong password"
+        case 1: return String(localized: "Weak")
+        case 2: return String(localized: "Fair")
+        case 3: return String(localized: "Good")
+        case 4: return String(localized: "Strong password")
         default: return ""
         }
     }

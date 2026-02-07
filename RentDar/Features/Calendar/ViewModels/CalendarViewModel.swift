@@ -261,6 +261,6 @@ final class CalendarViewModel {
     // MARK: - Property Name for Booking
 
     func propertyName(for booking: TransactionEntity) -> String {
-        booking.property?.displayName ?? "Unknown"
+        booking.property?.displayName ?? String(localized: "Unknown")
     }
 }

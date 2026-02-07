@@ -170,12 +170,12 @@ final class LogBookingViewModel {
         if includeCleaningFee && cleaningFee > 0 {
             let cleaningExpense = TransactionEntity(context: context)
             cleaningExpense.id = UUID()
-            cleaningExpense.name = "Cleaning Service"
+            cleaningExpense.name = String(localized: "Cleaning Service")
             cleaningExpense.amount = cleaningFee
             cleaningExpense.date = start
             cleaningExpense.isIncome = false
             cleaningExpense.category = "cleaning"
-            cleaningExpense.detail = "Turnover clean for \(guestName.isEmpty ? "guest" : guestName)"
+            cleaningExpense.detail = String(localized: "Turnover clean for \(guestName.isEmpty ? String(localized: "guest") : guestName)")
             cleaningExpense.createdAt = Date()
             cleaningExpense.property = property
         }
@@ -184,12 +184,12 @@ final class LogBookingViewModel {
         if includePlatformFee && platformFee > 0 {
             let platformExpense = TransactionEntity(context: context)
             platformExpense.id = UUID()
-            platformExpense.name = "\(selectedPlatform) Service Fee"
+            platformExpense.name = String(localized: "\(selectedPlatform) Service Fee")
             platformExpense.amount = platformFee
             platformExpense.date = start
             platformExpense.isIncome = false
             platformExpense.category = "marketing"
-            platformExpense.detail = "\(Int(platformFeePercent))% platform fee for \(guestName.isEmpty ? "booking" : guestName)"
+            platformExpense.detail = String(localized: "\(Int(platformFeePercent))% platform fee for \(guestName.isEmpty ? String(localized: "booking") : guestName)")
             platformExpense.createdAt = Date()
             platformExpense.property = property
         }

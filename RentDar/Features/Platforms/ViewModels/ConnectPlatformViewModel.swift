@@ -49,24 +49,24 @@ enum PlatformType: String, CaseIterable, Identifiable {
         switch self {
         case .airbnb:
             return [
-                (1, "Open your Airbnb listing", "Go to airbnb.com → Host Dashboard → Select your listing"),
-                (2, "Go to Calendar settings", "Tap Calendar → Availability → Sync calendars"),
-                (3, "Export Calendar", "Tap \"Export Calendar\" and copy the link that appears"),
-                (4, "Paste it on the next screen", "Come back to RentDar and paste the copied link")
+                (1, String(localized: "Open your Airbnb listing"), String(localized: "Go to airbnb.com → Host Dashboard → Select your listing")),
+                (2, String(localized: "Go to Calendar settings"), String(localized: "Tap Calendar → Availability → Sync calendars")),
+                (3, String(localized: "Export Calendar"), String(localized: "Tap \"Export Calendar\" and copy the link that appears")),
+                (4, String(localized: "Paste it on the next screen"), String(localized: "Come back to RentDar and paste the copied link"))
             ]
         case .booking:
             return [
-                (1, "Open Booking.com Extranet", "Go to admin.booking.com and log in"),
-                (2, "Navigate to Calendar", "Click Property → Calendar → Sync"),
-                (3, "Export iCal URL", "Find \"Export Calendar\" and copy the iCal link"),
-                (4, "Paste it on the next screen", "Come back to RentDar and paste the copied link")
+                (1, String(localized: "Open Booking.com Extranet"), String(localized: "Go to admin.booking.com and log in")),
+                (2, String(localized: "Navigate to Calendar"), String(localized: "Click Property → Calendar → Sync")),
+                (3, String(localized: "Export iCal URL"), String(localized: "Find \"Export Calendar\" and copy the iCal link")),
+                (4, String(localized: "Paste it on the next screen"), String(localized: "Come back to RentDar and paste the copied link"))
             ]
         case .vrbo:
             return [
-                (1, "Open VRBO Dashboard", "Go to vrbo.com and access your listing"),
-                (2, "Find Calendar Export", "Go to Calendar → Import/Export"),
-                (3, "Copy iCal Link", "Click \"Export\" and copy the calendar URL"),
-                (4, "Paste it on the next screen", "Come back to RentDar and paste the copied link")
+                (1, String(localized: "Open VRBO Dashboard"), String(localized: "Go to vrbo.com and access your listing")),
+                (2, String(localized: "Find Calendar Export"), String(localized: "Go to Calendar → Import/Export")),
+                (3, String(localized: "Copy iCal Link"), String(localized: "Click \"Export\" and copy the calendar URL")),
+                (4, String(localized: "Paste it on the next screen"), String(localized: "Come back to RentDar and paste the copied link"))
             ]
         case .direct:
             return []
@@ -167,14 +167,14 @@ final class ConnectPlatformViewModel {
             // Step 1: Connect
             try? await Task.sleep(nanoseconds: 300_000_000)
             withAnimation(.spring(response: 0.3)) {
-                syncStatus.append(SyncStatusItem(message: "Connecting to \(selectedPlatform.rawValue)...", time: "0.2s", isComplete: true))
+                syncStatus.append(SyncStatusItem(message: String(localized: "Connecting to \(selectedPlatform.rawValue)..."), time: "0.2s", isComplete: true))
                 syncProgress = 0.15
             }
 
             // Step 2: Fetch calendar
             try? await Task.sleep(nanoseconds: 200_000_000)
             withAnimation(.spring(response: 0.3)) {
-                syncStatus.append(SyncStatusItem(message: "Fetching calendar data...", time: "0.4s", isComplete: true))
+                syncStatus.append(SyncStatusItem(message: String(localized: "Fetching calendar data..."), time: "0.4s", isComplete: true))
                 syncProgress = 0.25
             }
 
@@ -187,7 +187,7 @@ final class ConnectPlatformViewModel {
             let blocked = events.filter { !$0.isReservation }
 
             withAnimation(.spring(response: 0.3)) {
-                syncStatus.append(SyncStatusItem(message: "Found \(reservations.count) bookings, \(blocked.count) blocked", time: "1.2s", isComplete: true))
+                syncStatus.append(SyncStatusItem(message: String(localized: "Found \(reservations.count) bookings, \(blocked.count) blocked"), time: "1.2s", isComplete: true))
                 syncProgress = 0.5
                 importedBookings = reservations.count
                 importedBlocked = blocked.count
@@ -196,7 +196,7 @@ final class ConnectPlatformViewModel {
             // Step 4: Import bookings
             try? await Task.sleep(nanoseconds: 400_000_000)
             withAnimation(.spring(response: 0.3)) {
-                syncStatus.append(SyncStatusItem(message: "Importing to RentDar...", time: "1.8s", isComplete: true))
+                syncStatus.append(SyncStatusItem(message: String(localized: "Importing to RentDar..."), time: "1.8s", isComplete: true))
                 syncProgress = 0.7
             }
 
@@ -210,7 +210,7 @@ final class ConnectPlatformViewModel {
                 .prefix(5)
                 .map { event in
                     ImportedBooking(
-                        guestName: event.guestName ?? "Guest",
+                        guestName: event.guestName ?? String(localized: "Guest"),
                         startDate: event.startDate,
                         endDate: event.endDate,
                         nights: event.nights,
