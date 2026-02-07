@@ -7,6 +7,14 @@ enum PropertyDetailTab: String, CaseIterable {
     case overview = "Overview"
     case income = "Income"
     case expenses = "Expenses"
+
+    var displayName: String {
+        switch self {
+        case .overview: return String(localized: "Overview")
+        case .income: return String(localized: "Income")
+        case .expenses: return String(localized: "Expenses")
+        }
+    }
 }
 
 // MARK: - UI Data Models
@@ -30,9 +38,9 @@ struct MockBooking: Identifiable {
     }
 
     var badgeText: String {
-        if daysUntilCheckIn == 0 { return "TODAY" }
-        if daysUntilCheckIn == 1 { return "TOMORROW" }
-        return "IN \(daysUntilCheckIn) DAYS"
+        if daysUntilCheckIn == 0 { return String(localized: "TODAY") }
+        if daysUntilCheckIn == 1 { return String(localized: "TOMORROW") }
+        return String(localized: "IN \(daysUntilCheckIn) DAYS")
     }
 }
 
@@ -153,7 +161,16 @@ enum ExpenseCategory: String, CaseIterable {
         }
     }
 
-    var label: String { rawValue.capitalized }
+    var label: String {
+        switch self {
+        case .cleaning: return String(localized: "Cleaning")
+        case .repairs: return String(localized: "Repairs")
+        case .marketing: return String(localized: "Marketing")
+        case .supplies: return String(localized: "Supplies")
+        case .utilities: return String(localized: "Utilities")
+        case .other: return String(localized: "Other")
+        }
+    }
 
     var iconBg: Color {
         switch self {
@@ -198,14 +215,14 @@ final class PropertyDetailViewModel {
         let bookingCount: Int
 
         var lastSyncText: String {
-            guard let date = lastSyncDate else { return "Connect" }
+            guard let date = lastSyncDate else { return String(localized: "Connect") }
             let minutes = Int(-date.timeIntervalSinceNow / 60)
-            if minutes < 1 { return "Just now" }
-            if minutes < 60 { return "\(minutes)m ago" }
+            if minutes < 1 { return String(localized: "Just now") }
+            if minutes < 60 { return String(localized: "\(minutes)m ago") }
             let hours = minutes / 60
-            if hours < 24 { return "\(hours)h ago" }
+            if hours < 24 { return String(localized: "\(hours)h ago") }
             let days = hours / 24
-            return "\(days)d ago"
+            return String(localized: "\(days)d ago")
         }
     }
 
@@ -278,7 +295,7 @@ final class PropertyDetailViewModel {
             .sorted { ($0.date ?? .distantPast) < ($1.date ?? .distantPast) }
 
         if let next = upcoming.first {
-            let name = next.name ?? "Guest"
+            let name = next.name ?? String(localized: "Guest")
             let words = name.split(separator: " ")
             let initials = String(words.compactMap { $0.first }.prefix(2))
             let start = next.date ?? now
@@ -478,7 +495,7 @@ final class PropertyDetailViewModel {
         let tx = TransactionEntity(context: context)
         tx.id = UUID()
         tx.isIncome = true
-        tx.name = guestName.isEmpty ? "Guest" : guestName
+        tx.name = guestName.isEmpty ? String(localized: "Guest") : guestName
         tx.platform = platform.rawValue
         tx.amount = amount
         tx.date = checkIn

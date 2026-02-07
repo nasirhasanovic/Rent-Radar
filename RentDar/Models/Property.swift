@@ -126,7 +126,7 @@ extension TransactionEntity {
         if isIncome {
             let n = nights
             let p = platform ?? "Direct"
-            return n > 0 ? "\(n) nights \u{2022} \(p)" : p
+            return n > 0 ? String(localized: "\(n) nights \u{2022} \(p)") : p
         }
         return detail ?? ""
     }

@@ -35,6 +35,14 @@ enum InsightBadge: String {
     case good = "Good"
     case attention = "Attention"
 
+    var displayName: String {
+        switch self {
+        case .best: return String(localized: "Best")
+        case .good: return String(localized: "Good")
+        case .attention: return String(localized: "Attention")
+        }
+    }
+
     var color: Color {
         switch self {
         case .best: return Color(hex: "10B981")
@@ -243,15 +251,15 @@ final class InsightsViewModel {
 
     private func generateRecommendation(revenue: Double, expenses: Double, occupancy: Int) -> String {
         if occupancy < 50 {
-            return "Lower minimum stay to fill gaps"
+            return String(localized: "Lower minimum stay to fill gaps")
         }
         if expenses > revenue * 0.5 {
-            return "Review expense categories"
+            return String(localized: "Review expense categories")
         }
         if occupancy > 85 {
-            return "Consider raising rates"
+            return String(localized: "Consider raising rates")
         }
-        return "Performance on track"
+        return String(localized: "Performance on track")
     }
 
     private func calculatePortfolioMetrics() {
@@ -308,11 +316,11 @@ final class InsightsViewModel {
         if recommendations.isEmpty {
             recommendations.append(AIRecommendation(
                 icon: "✅",
-                title: "Performance on track",
-                description: "Your property is performing well. Keep monitoring for opportunities.",
+                title: String(localized: "Performance on track"),
+                description: String(localized: "Your property is performing well. Keep monitoring for opportunities."),
                 impact: "+\(symbol)0",
-                category: "Status",
-                actionLabel: "Details",
+                category: String(localized: "Status"),
+                actionLabel: String(localized: "Details"),
                 color: .green
             ))
         }
@@ -347,11 +355,11 @@ final class InsightsViewModel {
 
             return AIRecommendation(
                 icon: "📈",
-                title: "Raise weekend rate by \(symbol)\(suggestedIncrease)",
-                description: "Your occupancy is \(insight.occupancy)% — demand supports higher pricing",
+                title: String(localized: "Raise weekend rate by \(symbol)\(suggestedIncrease)"),
+                description: String(localized: "Your occupancy is \(insight.occupancy)% — demand supports higher pricing"),
                 impact: "+\(symbol)\(monthlyImpact)/mo",
-                category: "Revenue",
-                actionLabel: "Apply",
+                category: String(localized: "Revenue"),
+                actionLabel: String(localized: "Apply"),
                 color: .green
             )
         }
@@ -400,11 +408,11 @@ final class InsightsViewModel {
 
             return AIRecommendation(
                 icon: "📆",
-                title: "Fill \(largestGap.nights)-day gap (\(startStr)–\(endStr))",
-                description: "Lower minimum stay to 2 nights to attract bookings",
+                title: String(localized: "Fill \(largestGap.nights)-day gap (\(startStr)–\(endStr))"),
+                description: String(localized: "Lower minimum stay to 2 nights to attract bookings"),
                 impact: "+\(symbol)\(potentialRevenue)",
-                category: "Occupancy",
-                actionLabel: "View Gap",
+                category: String(localized: "Occupancy"),
+                actionLabel: String(localized: "View Gap"),
                 color: .blue
             )
         }
@@ -460,11 +468,11 @@ final class InsightsViewModel {
 
             return AIRecommendation(
                 icon: "⚠️",
-                title: "\(topCategory) costs up \(percentIncrease)%",
-                description: "\(symbol)\(Int(currentTotal)) this month vs \(symbol)\(Int(avgMonthly)) avg. Review your spending.",
-                impact: "Save \(symbol)\(potentialSavings)/mo",
-                category: "Expenses",
-                actionLabel: "Review",
+                title: String(localized: "\(topCategory) costs up \(percentIncrease)%"),
+                description: String(localized: "\(symbol)\(Int(currentTotal)) this month vs \(symbol)\(Int(avgMonthly)) avg. Review your spending."),
+                impact: String(localized: "Save \(symbol)\(potentialSavings)/mo"),
+                category: String(localized: "Expenses"),
+                actionLabel: String(localized: "Review"),
                 color: .amber
             )
         }
@@ -498,11 +506,11 @@ final class InsightsViewModel {
         if directPercent < 25 && estimatedFees > 50 {
             return AIRecommendation(
                 icon: "📊",
-                title: "Boost direct bookings",
-                description: "Only \(directPercent)% direct — you're paying ~\(symbol)\(estimatedFees)/mo in platform fees",
-                impact: "Save \(symbol)\(estimatedFees)/mo",
-                category: "Platform",
-                actionLabel: "Learn How",
+                title: String(localized: "Boost direct bookings"),
+                description: String(localized: "Only \(directPercent)% direct — you're paying ~\(symbol)\(estimatedFees)/mo in platform fees"),
+                impact: String(localized: "Save \(symbol)\(estimatedFees)/mo"),
+                category: String(localized: "Platform"),
+                actionLabel: String(localized: "Learn How"),
                 color: .purple
             )
         }
@@ -515,38 +523,38 @@ final class InsightsViewModel {
         return [
             AIRecommendation(
                 icon: "📈",
-                title: "Raise weekend rate by \(symbol)25",
-                description: "Your weekends book at 95% — demand supports it",
+                title: String(localized: "Raise weekend rate by \(symbol)25"),
+                description: String(localized: "Your weekends book at 95% — demand supports it"),
                 impact: "+\(symbol)200/mo",
-                category: "Revenue",
-                actionLabel: "Apply",
+                category: String(localized: "Revenue"),
+                actionLabel: String(localized: "Apply"),
                 color: .green
             ),
             AIRecommendation(
                 icon: "📆",
-                title: "Fill 3-day gap (Feb 15–17)",
-                description: "Lower minimum stay to 2 nights to attract bookings",
+                title: String(localized: "Fill 3-day gap (Feb 15–17)"),
+                description: String(localized: "Lower minimum stay to 2 nights to attract bookings"),
                 impact: "+\(symbol)370",
-                category: "Occupancy",
-                actionLabel: "View Gap",
+                category: String(localized: "Occupancy"),
+                actionLabel: String(localized: "View Gap"),
                 color: .blue
             ),
             AIRecommendation(
                 icon: "⚠️",
-                title: "Cleaning costs up 30%",
-                description: "\(symbol)170 this month vs \(symbol)130 avg. Review your provider",
-                impact: "Save \(symbol)40/mo",
-                category: "Expenses",
-                actionLabel: "Review",
+                title: String(localized: "Cleaning costs up 30%"),
+                description: String(localized: "\(symbol)170 this month vs \(symbol)130 avg. Review your provider"),
+                impact: String(localized: "Save \(symbol)40/mo"),
+                category: String(localized: "Expenses"),
+                actionLabel: String(localized: "Review"),
                 color: .amber
             ),
             AIRecommendation(
                 icon: "📊",
-                title: "Boost direct bookings",
-                description: "Only 12% direct — you're paying \(symbol)180/mo in platform fees",
-                impact: "Save \(symbol)180/mo",
-                category: "Platform",
-                actionLabel: "Learn How",
+                title: String(localized: "Boost direct bookings"),
+                description: String(localized: "Only 12% direct — you're paying \(symbol)180/mo in platform fees"),
+                impact: String(localized: "Save \(symbol)180/mo"),
+                category: String(localized: "Platform"),
+                actionLabel: String(localized: "Learn How"),
                 color: .purple
             )
         ]

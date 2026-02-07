@@ -7,18 +7,42 @@ enum RentalTypeFilter: String, CaseIterable {
     case all = "All"
     case shortTerm = "Short-term"
     case longTerm = "Long-term"
+
+    var displayName: String {
+        switch self {
+        case .all: return String(localized: "All")
+        case .shortTerm: return String(localized: "Short-term")
+        case .longTerm: return String(localized: "Long-term")
+        }
+    }
 }
 
 enum ShortTermStatusFilter: String, CaseIterable {
     case all = "All"
     case booked = "Booked"
     case available = "Available"
+
+    var displayName: String {
+        switch self {
+        case .all: return String(localized: "All")
+        case .booked: return String(localized: "Booked")
+        case .available: return String(localized: "Available")
+        }
+    }
 }
 
 enum LongTermStatusFilter: String, CaseIterable {
     case all = "All"
     case occupied = "Occupied"
     case vacant = "Vacant"
+
+    var displayName: String {
+        switch self {
+        case .all: return String(localized: "All")
+        case .occupied: return String(localized: "Occupied")
+        case .vacant: return String(localized: "Vacant")
+        }
+    }
 }
 
 @Observable
@@ -29,7 +53,7 @@ final class DashboardViewModel {
 
     var userName: String {
         let name = AppSettings.shared.userName
-        return name.isEmpty ? "User" : name
+        return name.isEmpty ? String(localized: "User") : name
     }
 
     var userInitial: String {
@@ -268,11 +292,11 @@ final class DashboardViewModel {
     }
 
     var conflictPropertyName: String {
-        "Beach Studio"
+        String(localized: "Beach Studio")
     }
 
     var conflictDateRange: String {
-        "· Feb 20–23 overlaps on 2 platforms"
+        String(localized: "· Feb 20–23 overlaps on 2 platforms")
     }
 
     func conflictInfo(for property: PropertyEntity) -> PropertyConflictInfo? {
