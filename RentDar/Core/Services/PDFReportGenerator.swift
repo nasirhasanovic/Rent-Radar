@@ -121,11 +121,11 @@ struct PDFReportGenerator {
 
         var reportSubtitle: String {
             var parts: [String] = []
-            if selectedDataTypes.contains("Bookings") { parts.append("Bookings") }
-            if selectedDataTypes.contains("Income") { parts.append("Income") }
-            if selectedDataTypes.contains("Expenses") { parts.append("Expenses") }
-            if selectedDataTypes.contains("Occupancy") { parts.append("Occupancy") }
-            return parts.isEmpty ? "Summary" : parts.joined(separator: " & ") + " Summary"
+            if selectedDataTypes.contains("Bookings") { parts.append(String(localized: "Bookings")) }
+            if selectedDataTypes.contains("Income") { parts.append(String(localized: "Income")) }
+            if selectedDataTypes.contains("Expenses") { parts.append(String(localized: "Expenses")) }
+            if selectedDataTypes.contains("Occupancy") { parts.append(String(localized: "Occupancy")) }
+            return parts.isEmpty ? String(localized: "Summary") : parts.joined(separator: " & ") + " " + String(localized: "Summary")
         }
 
         // Expenses grouped by category
@@ -282,7 +282,7 @@ struct PDFReportGenerator {
 
         // Title
         y = 82
-        drawText("Monthly Report", at: CGPoint(x: margin, y: y),
+        drawText(String(localized: "Monthly Report"), at: CGPoint(x: margin, y: y),
                  font: .systemFont(ofSize: 28, weight: .heavy), color: .white)
 
         y = 116
@@ -299,7 +299,7 @@ struct PDFReportGenerator {
         if expensesOnly {
             // Expenses-only: Show expense metrics and detail on cover page
             y = headerHeight + 28
-            drawText("EXPENSES OVERVIEW", at: CGPoint(x: margin, y: y),
+            drawText(String(localized: "EXPENSES OVERVIEW"), at: CGPoint(x: margin, y: y),
                      font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
             y += 16
@@ -307,7 +307,7 @@ struct PDFReportGenerator {
 
             // Expenses Detail
             y += 100
-            drawText("EXPENSES DETAIL", at: CGPoint(x: margin, y: y),
+            drawText(String(localized: "EXPENSES DETAIL"), at: CGPoint(x: margin, y: y),
                      font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
             y += 14
@@ -315,7 +315,7 @@ struct PDFReportGenerator {
 
             // Category Summary
             y += 20
-            drawText("BY CATEGORY", at: CGPoint(x: margin, y: y),
+            drawText(String(localized: "BY CATEGORY"), at: CGPoint(x: margin, y: y),
                      font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
             y += 14
@@ -324,7 +324,7 @@ struct PDFReportGenerator {
         } else {
             // Normal flow: Show income metrics
             y = headerHeight + 28
-            drawText("KEY METRICS", at: CGPoint(x: margin, y: y),
+            drawText(String(localized: "KEY METRICS"), at: CGPoint(x: margin, y: y),
                      font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
             y += 20
@@ -333,7 +333,7 @@ struct PDFReportGenerator {
             // Income by Property - only if bookings or income selected
             if data.hasBookingsOrIncome {
                 y += 110
-                drawText("INCOME BY PROPERTY", at: CGPoint(x: margin, y: y),
+                drawText(String(localized: "INCOME BY PROPERTY"), at: CGPoint(x: margin, y: y),
                          font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
                 y += 16
@@ -342,7 +342,7 @@ struct PDFReportGenerator {
                 // Platform Breakdown
                 if !data.platformBreakdown.isEmpty {
                     y += 24
-                    drawText("PLATFORM BREAKDOWN", at: CGPoint(x: margin, y: y),
+                    drawText(String(localized: "PLATFORM BREAKDOWN"), at: CGPoint(x: margin, y: y),
                              font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
                     y += 16
@@ -369,14 +369,14 @@ struct PDFReportGenerator {
         drawText("RentDar", at: CGPoint(x: margin + 24, y: 16),
                  font: .systemFont(ofSize: 14, weight: .bold), color: .white)
 
-        let periodText = "Monthly Report · \(data.periodString)"
+        let periodText = String(localized: "Monthly Report") + " · \(data.periodString)"
         let periodWidth = periodText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 11)]).width
         drawText(periodText, at: CGPoint(x: rect.width - margin - periodWidth, y: 18),
                  font: .systemFont(ofSize: 11, weight: .regular), color: UIColor.white.withAlphaComponent(0.6))
 
         // Bookings Detail Table
         y = miniHeaderHeight + 24
-        drawText("BOOKINGS DETAIL", at: CGPoint(x: margin, y: y),
+        drawText(String(localized: "BOOKINGS DETAIL"), at: CGPoint(x: margin, y: y),
                  font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
         y += 18
@@ -404,14 +404,14 @@ struct PDFReportGenerator {
         drawText("RentDar", at: CGPoint(x: margin + 24, y: 16),
                  font: .systemFont(ofSize: 14, weight: .bold), color: .white)
 
-        let periodText = "Monthly Report · \(data.periodString)"
+        let periodText = String(localized: "Monthly Report") + " · \(data.periodString)"
         let periodWidth = periodText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 11)]).width
         drawText(periodText, at: CGPoint(x: rect.width - margin - periodWidth, y: 18),
                  font: .systemFont(ofSize: 11, weight: .regular), color: UIColor.white.withAlphaComponent(0.6))
 
         // Expenses Overview
         y = miniHeaderHeight + 20
-        drawText("EXPENSES OVERVIEW", at: CGPoint(x: margin, y: y),
+        drawText(String(localized: "EXPENSES OVERVIEW"), at: CGPoint(x: margin, y: y),
                  font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
         y += 16
@@ -419,7 +419,7 @@ struct PDFReportGenerator {
 
         // Expenses Detail (individual items)
         y += 90
-        drawText("EXPENSES DETAIL", at: CGPoint(x: margin, y: y),
+        drawText(String(localized: "EXPENSES DETAIL"), at: CGPoint(x: margin, y: y),
                  font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
         y += 14
@@ -427,7 +427,7 @@ struct PDFReportGenerator {
 
         // Category Summary
         y += 20
-        drawText("BY CATEGORY", at: CGPoint(x: margin, y: y),
+        drawText(String(localized: "BY CATEGORY"), at: CGPoint(x: margin, y: y),
                  font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
         y += 14
@@ -436,7 +436,7 @@ struct PDFReportGenerator {
         // Per-property breakdown if multiple properties
         if data.properties.count > 1 {
             y += 20
-            drawText("BY PROPERTY", at: CGPoint(x: margin, y: y),
+            drawText(String(localized: "BY PROPERTY"), at: CGPoint(x: margin, y: y),
                      font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
             y += 14
@@ -461,14 +461,14 @@ struct PDFReportGenerator {
         drawText("RentDar", at: CGPoint(x: margin + 24, y: 16),
                  font: .systemFont(ofSize: 14, weight: .bold), color: .white)
 
-        let periodText = "Expenses Report · \(data.periodString)"
+        let periodText = String(localized: "Expenses Report") + " · \(data.periodString)"
         let periodWidth = periodText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 11)]).width
         drawText(periodText, at: CGPoint(x: rect.width - margin - periodWidth, y: 18),
                  font: .systemFont(ofSize: 11, weight: .regular), color: UIColor.white.withAlphaComponent(0.6))
 
         // Per-property breakdown
         y = miniHeaderHeight + 24
-        drawText("EXPENSES BY PROPERTY", at: CGPoint(x: margin, y: y),
+        drawText(String(localized: "EXPENSES BY PROPERTY"), at: CGPoint(x: margin, y: y),
                  font: .systemFont(ofSize: 11, weight: .bold), color: gray500)
 
         y += 16
@@ -486,9 +486,9 @@ struct PDFReportGenerator {
         let spacing: CGFloat = 12
 
         let cards: [(String, String, String, UIColor, UIColor)] = [
-            ("Total Expenses", "\(data.currencySymbol)\(Int(data.totalExpenses).formatted())", "-8% vs last month", errorDark, errorLight),
-            ("Net Profit", "\(data.currencySymbol)\(Int(data.netProfit).formatted())", "\(data.profitMargin)% margin", success, tealLight),
-            ("Avg per Property", "\(data.currencySymbol)\(Int(data.avgExpensePerProperty).formatted())", "\(data.properties.count) properties", gray900, gray50)
+            (String(localized: "Total Expenses"), "\(data.currencySymbol)\(Int(data.totalExpenses).formatted())", String(localized: "-8% vs last month"), errorDark, errorLight),
+            (String(localized: "Net Profit"), "\(data.currencySymbol)\(Int(data.netProfit).formatted())", String(localized: "\(data.profitMargin)% margin"), success, tealLight),
+            (String(localized: "Avg per Property"), "\(data.currencySymbol)\(Int(data.avgExpensePerProperty).formatted())", String(localized: "\(data.properties.count) properties"), gray900, gray50)
         ]
 
         for (index, card) in cards.enumerated() {
@@ -545,7 +545,7 @@ struct PDFReportGenerator {
             point.x + width - 14    // Amount (right aligned)
         ]
 
-        let headers = ["Description", "Property", "Category", "Date", "Amount"]
+        let headers = [String(localized: "Description"), String(localized: "Property"), String(localized: "Category"), String(localized: "Date"), String(localized: "Amount")]
         for (i, header) in headers.enumerated() {
             if i == headers.count - 1 {
                 drawTextRightAligned(header, at: CGPoint(x: cols[i], y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
@@ -574,9 +574,9 @@ struct PDFReportGenerator {
                 context.fill(rowRect)
             }
 
-            let description = expense.detail ?? expense.name ?? "Expense"
+            let description = expense.detail ?? expense.name ?? String(localized: "Expense")
             let propertyName = expense.property?.displayName ?? "—"
-            let category = expense.category ?? "Other"
+            let category = expense.category ?? String(localized: "Other")
             let dateStr = expense.date.map { dateFormatter.string(from: $0) } ?? "—"
             let amount = "-\(data.currencySymbol)\(Int(expense.amount).formatted())"
 
@@ -631,7 +631,7 @@ struct PDFReportGenerator {
                      font: .systemFont(ofSize: 18, weight: .heavy), color: errorDark)
 
             // Count
-            drawText("\(expenseCount) expense\(expenseCount == 1 ? "" : "s")", at: CGPoint(x: x + 12, y: point.y + 50),
+            drawText(String(localized: "\(expenseCount) expenses"), at: CGPoint(x: x + 12, y: point.y + 50),
                      font: .systemFont(ofSize: 10, weight: .regular), color: gray500)
         }
     }
@@ -660,10 +660,10 @@ struct PDFReportGenerator {
         let col3 = point.x + width * 0.7
         let col4 = point.x + width - 16
 
-        drawText("Category", at: CGPoint(x: col1, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
-        drawTextRightAligned("Amount", at: CGPoint(x: col2 + 30, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
-        drawTextRightAligned("% of Total", at: CGPoint(x: col3 + 30, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
-        drawTextRightAligned("vs Last Mo.", at: CGPoint(x: col4, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
+        drawText(String(localized: "Category"), at: CGPoint(x: col1, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "Amount"), at: CGPoint(x: col2 + 30, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "% of Total"), at: CGPoint(x: col3 + 30, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "vs Last Mo."), at: CGPoint(x: col4, y: y + 9), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
 
         y += rowHeight
 
@@ -708,7 +708,7 @@ struct PDFReportGenerator {
         context.addPath(UIBezierPath(roundedRect: totalRect, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 9, height: 9)).cgPath)
         context.fillPath()
 
-        drawText("Total", at: CGPoint(x: col1, y: y + 8), font: .systemFont(ofSize: 11, weight: .bold), color: errorDark)
+        drawText(String(localized: "Total"), at: CGPoint(x: col1, y: y + 8), font: .systemFont(ofSize: 11, weight: .bold), color: errorDark)
         drawTextRightAligned("\(data.currencySymbol)\(Int(data.totalExpenses).formatted())", at: CGPoint(x: col2 + 30, y: y + 8), font: .systemFont(ofSize: 11, weight: .bold), color: errorDark)
         drawTextRightAligned("100%", at: CGPoint(x: col3 + 30, y: y + 8), font: .systemFont(ofSize: 11, weight: .bold), color: errorDark)
         drawTextRightAligned("—", at: CGPoint(x: col4, y: y + 8), font: .systemFont(ofSize: 10, weight: .semibold), color: success)
@@ -741,11 +741,11 @@ struct PDFReportGenerator {
         let col4 = point.x + width * 0.68
         let col5 = point.x + width - 16
 
-        drawText("Property", at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
-        drawTextRightAligned("Income", at: CGPoint(x: col2 + 30, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
-        drawTextRightAligned("Expenses", at: CGPoint(x: col3 + 30, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
-        drawTextRightAligned("Profit", at: CGPoint(x: col4 + 30, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
-        drawTextRightAligned("Margin", at: CGPoint(x: col5, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawText(String(localized: "Property"), at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "Income"), at: CGPoint(x: col2 + 30, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "Expenses"), at: CGPoint(x: col3 + 30, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "Profit"), at: CGPoint(x: col4 + 30, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "Margin"), at: CGPoint(x: col5, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
 
         y += rowHeight
 
@@ -787,7 +787,7 @@ struct PDFReportGenerator {
         context.addPath(UIBezierPath(roundedRect: totalRect, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 9, height: 9)).cgPath)
         context.fillPath()
 
-        drawText("Total", at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
+        drawText(String(localized: "Total"), at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
         drawTextRightAligned("\(data.currencySymbol)\(Int(data.totalIncome).formatted())", at: CGPoint(x: col2 + 30, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: success)
         drawTextRightAligned("-\(data.currencySymbol)\(Int(data.totalExpenses).formatted())", at: CGPoint(x: col3 + 30, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: error)
         drawTextRightAligned("\(data.currencySymbol)\(Int(data.netProfit).formatted())", at: CGPoint(x: col4 + 30, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
@@ -832,18 +832,18 @@ struct PDFReportGenerator {
 
         // Period badge
         let periodBadge = drawInfoBadge(in: context, at: CGPoint(x: x, y: point.y),
-                                        label: "Period", value: data.periodString)
+                                        label: String(localized: "Period"), value: data.periodString)
         x += periodBadge + badgeSpacing
 
         // Properties badge
-        let propertiesText = data.properties.count == 1 ? data.properties.first?.displayName ?? "1 property" : "All (\(data.properties.count) properties)"
+        let propertiesText = data.properties.count == 1 ? data.properties.first?.displayName ?? String(localized: "1 property") : String(localized: "All (\(data.properties.count) properties)")
         let propertiesBadge = drawInfoBadge(in: context, at: CGPoint(x: x, y: point.y),
-                                            label: "Properties", value: propertiesText)
+                                            label: String(localized: "Properties"), value: propertiesText)
         x += propertiesBadge + badgeSpacing
 
         // Generated badge
         _ = drawInfoBadge(in: context, at: CGPoint(x: x, y: point.y),
-                          label: "Generated", value: data.generatedDateString)
+                          label: String(localized: "Generated"), value: data.generatedDateString)
     }
 
     @discardableResult
@@ -880,10 +880,10 @@ struct PDFReportGenerator {
         let spacing: CGFloat = 12
 
         let metrics: [(String, String, String, Bool)] = [
-            ("Total Income", "\(data.currencySymbol)\(Int(data.totalIncome).formatted())", "+12% vs last month", true),
-            ("Bookings", "\(data.totalBookings)", "+3 vs last month", true),
-            ("Nights Booked", "\(data.totalNights)", "Avg \(String(format: "%.1f", data.totalBookings > 0 ? Double(data.totalNights) / Double(data.totalBookings) : 0))/booking", false),
-            ("Occupancy", "\(data.occupancyPercent)%", "+5% vs last month", false)
+            (String(localized: "Total Income"), "\(data.currencySymbol)\(Int(data.totalIncome).formatted())", String(localized: "+12% vs last month"), true),
+            (String(localized: "Bookings"), "\(data.totalBookings)", String(localized: "+3 vs last month"), true),
+            (String(localized: "Nights Booked"), "\(data.totalNights)", String(localized: "Avg \(String(format: "%.1f", data.totalBookings > 0 ? Double(data.totalNights) / Double(data.totalBookings) : 0))/booking"), false),
+            (String(localized: "Occupancy"), "\(data.occupancyPercent)%", String(localized: "+5% vs last month"), false)
         ]
 
         for (index, metric) in metrics.enumerated() {
@@ -934,10 +934,10 @@ struct PDFReportGenerator {
         let col3 = point.x + width * 0.65
         let col4 = point.x + width - 16
 
-        drawText("Property", at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
-        drawText("Bookings", at: CGPoint(x: col2, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
-        drawText("Nights", at: CGPoint(x: col3, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
-        drawTextRightAligned("Income", at: CGPoint(x: col4, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawText(String(localized: "Property"), at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawText(String(localized: "Bookings"), at: CGPoint(x: col2, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawText(String(localized: "Nights"), at: CGPoint(x: col3, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
+        drawTextRightAligned(String(localized: "Income"), at: CGPoint(x: col4, y: y + 14), font: .systemFont(ofSize: 10, weight: .semibold), color: gray500)
 
         y += rowHeight
 
@@ -970,7 +970,7 @@ struct PDFReportGenerator {
         context.addPath(UIBezierPath(roundedRect: totalRect, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 9, height: 9)).cgPath)
         context.fillPath()
 
-        drawText("Total", at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
+        drawText(String(localized: "Total"), at: CGPoint(x: col1, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
         drawText("\(data.totalBookings)", at: CGPoint(x: col2, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
         drawText("\(data.totalNights)", at: CGPoint(x: col3, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
         drawTextRightAligned("\(data.currencySymbol)\(Int(data.totalIncome).formatted())", at: CGPoint(x: col4, y: y + 14), font: .systemFont(ofSize: 12, weight: .bold), color: tealDark)
@@ -1021,7 +1021,7 @@ struct PDFReportGenerator {
                      font: .systemFont(ofSize: 20, weight: .heavy), color: gray900, centered: true)
 
             // Percentage
-            drawText("bookings (\(platform.percent)%)", at: CGPoint(x: x + cardWidth / 2, y: point.y + 76),
+            drawText(String(localized: "bookings (\(platform.percent)%)"), at: CGPoint(x: x + cardWidth / 2, y: point.y + 76),
                      font: .systemFont(ofSize: 10, weight: .regular), color: gray500, centered: true)
 
             // Income
@@ -1059,7 +1059,7 @@ struct PDFReportGenerator {
             point.x + width - 14    // Amount (right aligned)
         ]
 
-        let headers = ["Guest", "Property", "Check-in", "Nights", "Platform", "Amount"]
+        let headers = [String(localized: "Guest"), String(localized: "Property"), String(localized: "Check-in"), String(localized: "Nights"), String(localized: "Platform"), String(localized: "Amount")]
         for (i, header) in headers.enumerated() {
             if i == headers.count - 1 {
                 drawTextRightAligned(header, at: CGPoint(x: cols[i], y: y + 10), font: .systemFont(ofSize: 9, weight: .semibold), color: gray500)
@@ -1088,8 +1088,8 @@ struct PDFReportGenerator {
                 context.fill(rowRect)
             }
 
-            let guestName = booking.name ?? "Guest"
-            let propertyName = booking.property?.displayName ?? "Unknown"
+            let guestName = booking.name ?? String(localized: "Guest")
+            let propertyName = booking.property?.displayName ?? String(localized: "Unknown")
             let checkIn = booking.date.map { dateFormatter.string(from: $0) } ?? "-"
             let nights = "\(booking.nights)"
             let platform = booking.platform ?? "Direct"
@@ -1120,7 +1120,7 @@ struct PDFReportGenerator {
         context.addPath(path.cgPath)
         context.fillPath()
 
-        let text = "This report was automatically generated by RentDar. All amounts are shown before platform fees. Data reflects bookings confirmed as of the report generation date."
+        let text = String(localized: "This report was automatically generated by RentDar. All amounts are shown before platform fees. Data reflects bookings confirmed as of the report generation date.")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 2
 
@@ -1145,10 +1145,10 @@ struct PDFReportGenerator {
         context.addLine(to: CGPoint(x: rect.width - margin, y: y - 10))
         context.strokePath()
 
-        drawText("Generated by RentDar · rentdar.app", at: CGPoint(x: margin, y: y),
+        drawText(String(localized: "Generated by RentDar · rentdar.app"), at: CGPoint(x: margin, y: y),
                  font: .systemFont(ofSize: 9, weight: .regular), color: UIColor(white: 0.6, alpha: 1))
 
-        let pageText = "Page \(pageNumber) of \(totalPages)"
+        let pageText = String(localized: "Page \(pageNumber) of \(totalPages)")
         let pageWidth = pageText.size(withAttributes: [.font: UIFont.systemFont(ofSize: 9)]).width
         drawText(pageText, at: CGPoint(x: rect.width - margin - pageWidth, y: y),
                  font: .systemFont(ofSize: 9, weight: .regular), color: UIColor(white: 0.6, alpha: 1))

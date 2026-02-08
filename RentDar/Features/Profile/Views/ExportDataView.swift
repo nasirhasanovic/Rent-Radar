@@ -528,7 +528,7 @@ struct ExportDataView: View {
                     .foregroundStyle(AppColors.textPrimary)
                     .padding(.bottom, 8)
 
-                Text("Compiling your \(selectedDataTypesText) data for \(selectedPeriod.rawValue.lowercased())...")
+                Text("Compiling your \(selectedDataTypesText) data for \(selectedPeriod.displayName.lowercased())...")
                     .font(.system(size: 14))
                     .foregroundStyle(Color(hex: "6B7280"))
                     .multilineTextAlignment(.center)
@@ -574,7 +574,7 @@ struct ExportDataView: View {
     }
 
     private var selectedDataTypesText: String {
-        selectedDataTypes.map { $0.rawValue.lowercased() }.joined(separator: " and ")
+        selectedDataTypes.map { $0.displayName.lowercased() }.joined(separator: " and ")
     }
 
     private var exportSummaryCard: some View {
@@ -585,9 +585,9 @@ struct ExportDataView: View {
                 .kerning(0.5)
 
             VStack(spacing: 0) {
-                SummaryRow(label: "Data", value: selectedDataTypes.map { $0.rawValue }.joined(separator: ", "))
+                SummaryRow(label: "Data", value: selectedDataTypes.map { $0.displayName }.joined(separator: ", "))
                 Divider().padding(.vertical, 10)
-                SummaryRow(label: "Period", value: selectedPeriod.rawValue)
+                SummaryRow(label: "Period", value: selectedPeriod.displayName)
                 Divider().padding(.vertical, 10)
                 SummaryRow(label: "Properties", value: propertiesSummaryText)
                 Divider().padding(.vertical, 10)
@@ -740,7 +740,7 @@ struct ExportDataView: View {
 
                 HStack(spacing: 6) {
                     ForEach(Array(selectedDataTypes), id: \.self) { dataType in
-                        Text(dataType.rawValue)
+                        Text(dataType.displayName)
                             .font(.system(size: 10, weight: .semibold))
                             .foregroundStyle(AppColors.teal500)
                             .padding(.horizontal, 8)
@@ -766,7 +766,7 @@ struct ExportDataView: View {
 
     private var pdfFileInfo: String {
         guard let url = generatedPDFURL else {
-            return "Generating..."
+            return String(localized: "Generating...")
         }
 
         // Get file size
@@ -786,13 +786,13 @@ struct ExportDataView: View {
         }
 
         if !sizeString.isEmpty && pageCount > 0 {
-            return "\(sizeString) · \(pageCount) \(pageCount == 1 ? "page" : "pages")"
+            return String(localized: "\(sizeString) · \(pageCount) pages")
         } else if !sizeString.isEmpty {
             return sizeString
         } else if pageCount > 0 {
-            return "\(pageCount) \(pageCount == 1 ? "page" : "pages")"
+            return String(localized: "\(pageCount) pages")
         }
-        return "PDF Report"
+        return String(localized: "PDF Report")
     }
 
     private var reportHighlights: some View {
@@ -928,7 +928,7 @@ struct ExportDataView: View {
 
     private var topPlatform: String {
         let incomeTransactions = filteredTransactions.filter { $0.isIncome }
-        guard !incomeTransactions.isEmpty else { return "N/A" }
+        guard !incomeTransactions.isEmpty else { return String(localized: "N/A") }
         let platforms = incomeTransactions.compactMap { $0.platform }
         guard !platforms.isEmpty else { return "Direct" }
         let counts = Dictionary(grouping: platforms) { $0 }.mapValues { $0.count }
@@ -1168,12 +1168,21 @@ enum ExportDataType: String, CaseIterable {
     case expenses = "Expenses"
     case occupancy = "Occupancy"
 
+    var displayName: String {
+        switch self {
+        case .bookings: return String(localized: "Bookings")
+        case .income: return String(localized: "Income")
+        case .expenses: return String(localized: "Expenses")
+        case .occupancy: return String(localized: "Occupancy")
+        }
+    }
+
     var subtitle: String {
         switch self {
-        case .bookings: return "Guest names, dates, platforms, status"
-        case .income: return "Revenue by property, platform breakdown"
-        case .expenses: return "Cleaning, maintenance, fees, taxes"
-        case .occupancy: return "Occupancy rates, nights booked, gaps"
+        case .bookings: return String(localized: "Guest names, dates, platforms, status")
+        case .income: return String(localized: "Revenue by property, platform breakdown")
+        case .expenses: return String(localized: "Cleaning, maintenance, fees, taxes")
+        case .occupancy: return String(localized: "Occupancy rates, nights booked, gaps")
         }
     }
 
@@ -1194,6 +1203,17 @@ enum TimePeriod: String, CaseIterable {
     case last3Months = "Last 3 Months"
     case thisYear = "This Year"
     case custom = "Custom"
+
+    var displayName: String {
+        switch self {
+        case .thisWeek: return String(localized: "This Week")
+        case .thisMonth: return String(localized: "This Month")
+        case .lastMonth: return String(localized: "Last Month")
+        case .last3Months: return String(localized: "Last 3 Months")
+        case .thisYear: return String(localized: "This Year")
+        case .custom: return String(localized: "Custom")
+        }
+    }
 
     var shortText: String {
         let formatter = DateFormatter()
@@ -1241,7 +1261,7 @@ enum TimePeriod: String, CaseIterable {
         case .thisYear:
             return "Jan 1 – Dec 31, \(calendar.component(.year, from: now))"
         case .custom:
-            return "Select date range"
+            return String(localized: "Select date range")
         }
     }
 }
@@ -1278,7 +1298,7 @@ private struct ExportOptionRow: View {
                 }
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(dataType.rawValue)
+                    Text(dataType.displayName)
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundStyle(AppColors.textPrimary)
 
@@ -1332,7 +1352,7 @@ private struct PeriodChip: View {
                         .foregroundStyle(isSelected ? AppColors.teal500 : Color(hex: "6B7280"))
                 }
 
-                Text(period.rawValue)
+                Text(period.displayName)
                     .font(.system(size: 13, weight: isSelected ? .semibold : .medium))
                     .foregroundStyle(isSelected ? AppColors.teal500 : Color(hex: "374151"))
             }
