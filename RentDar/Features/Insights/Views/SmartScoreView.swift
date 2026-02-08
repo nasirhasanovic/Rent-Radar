@@ -79,11 +79,11 @@ struct SmartScoreView: View {
         } else if expenseRatio < 30 {
             expenseScore = 18
             expenseWarning = true
-            expenseTip = "Reduce cleaning costs to hit 24/25"
+            expenseTip = String(localized: "Reduce cleaning costs to hit 24/25")
         } else {
             expenseScore = 15
             expenseWarning = true
-            expenseTip = "Review expense categories to improve score"
+            expenseTip = String(localized: "Review expense categories to improve score")
         }
 
         let rating = insight?.rating ?? 4.5
@@ -92,17 +92,17 @@ struct SmartScoreView: View {
         return [
             ScoreCategory(
                 icon: "🗓",
-                title: "Occupancy Rate",
-                subtitle: "\(occupancy)% this month",
+                title: String(localized: "Occupancy Rate"),
+                subtitle: String(localized: "\(occupancy)% this month"),
                 score: occupancyScore,
                 maxScore: 25,
                 isWarning: occupancy < 60,
-                tip: occupancy < 60 ? "Lower minimum stay to fill gaps" : nil
+                tip: occupancy < 60 ? String(localized: "Lower minimum stay to fill gaps") : nil
             ),
             ScoreCategory(
                 icon: "💰",
-                title: "Revenue Growth",
-                subtitle: revenue > 0 ? "+12% month-over-month" : "No revenue yet",
+                title: String(localized: "Revenue Growth"),
+                subtitle: revenue > 0 ? String(localized: "+12% month-over-month") : String(localized: "No revenue yet"),
                 score: revenueScore,
                 maxScore: 25,
                 isWarning: revenue == 0,
@@ -110,8 +110,8 @@ struct SmartScoreView: View {
             ),
             ScoreCategory(
                 icon: "📋",
-                title: "Expense Efficiency",
-                subtitle: String(format: "%.1f%% expense ratio", expenseRatio),
+                title: String(localized: "Expense Efficiency"),
+                subtitle: String(localized: "\(String(format: "%.1f", expenseRatio))% expense ratio"),
                 score: expenseScore,
                 maxScore: 25,
                 isWarning: expenseWarning,
@@ -119,8 +119,8 @@ struct SmartScoreView: View {
             ),
             ScoreCategory(
                 icon: "⭐",
-                title: "Guest Satisfaction",
-                subtitle: String(format: "%.2f avg rating", rating),
+                title: String(localized: "Guest Satisfaction"),
+                subtitle: String(localized: "\(String(format: "%.2f", rating)) avg rating"),
                 score: satisfactionScore,
                 maxScore: 25,
                 isWarning: rating < 4.5,
@@ -135,7 +135,7 @@ struct SmartScoreView: View {
         let expenseRatio = (insight?.expenses ?? 0) / max(1, insight?.revenue ?? 1)
         if expenseRatio > 0.15 {
             items.append(ScoreImprovement(
-                title: "Reduce cleaning costs by \(settings.currencySymbol)20/visit",
+                title: String(localized: "Reduce cleaning costs by \(settings.currencySymbol)20/visit"),
                 impact: 3
             ))
         }
@@ -143,14 +143,14 @@ struct SmartScoreView: View {
         if (insight?.occupancy ?? 0) > 70 {
             let suggestedRate = Int(property.nightlyRate) + 25
             items.append(ScoreImprovement(
-                title: "Raise weekend rates to \(settings.currencySymbol)\(suggestedRate)",
+                title: String(localized: "Raise weekend rates to \(settings.currencySymbol)\(suggestedRate)"),
                 impact: 3
             ))
         }
 
         if items.isEmpty {
             items.append(ScoreImprovement(
-                title: "Maintain current performance",
+                title: String(localized: "Maintain current performance"),
                 impact: 0
             ))
         }

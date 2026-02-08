@@ -28,6 +28,16 @@ struct SearchView: View {
         case bookings = "Bookings"
         case guests = "Guests"
         case expenses = "Expenses"
+
+        var displayName: String {
+            switch self {
+            case .all: return String(localized: "All")
+            case .properties: return String(localized: "Properties")
+            case .bookings: return String(localized: "Bookings")
+            case .guests: return String(localized: "Guests")
+            case .expenses: return String(localized: "Expenses")
+            }
+        }
     }
 
     var body: some View {
@@ -198,7 +208,7 @@ struct SearchView: View {
                             selectedFilter = filter
                         }
                     } label: {
-                        Text(filter.rawValue)
+                        Text(filter.displayName)
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundStyle(selectedFilter == filter ? .white : Color(hex: "6B7280"))
                             .padding(.horizontal, 14)

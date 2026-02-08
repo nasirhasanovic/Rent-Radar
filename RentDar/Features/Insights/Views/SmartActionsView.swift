@@ -18,6 +18,14 @@ enum ActionPriority: String {
     case medium = "MEDIUM"
     case growth = "GROWTH"
 
+    var displayName: String {
+        switch self {
+        case .high: return String(localized: "HIGH")
+        case .medium: return String(localized: "MEDIUM")
+        case .growth: return String(localized: "GROWTH")
+        }
+    }
+
     var color: Color {
         switch self {
         case .high: return AppColors.error
@@ -58,6 +66,15 @@ enum ActionFilter: String, CaseIterable {
     case revenue = "Revenue"
     case savings = "Savings"
     case growth = "Growth"
+
+    var displayName: String {
+        switch self {
+        case .all: return String(localized: "All")
+        case .revenue: return String(localized: "Revenue")
+        case .savings: return String(localized: "Savings")
+        case .growth: return String(localized: "Growth")
+        }
+    }
 }
 
 // MARK: - Smart Actions View
@@ -127,8 +144,8 @@ struct SmartActionsView: View {
         // Add additional actionable recommendations
         actions.append(SmartAction(
             priority: .medium,
-            title: "Update Listing Photos",
-            description: "Properties with refreshed photos see 15% more views. Keep your listing fresh.",
+            title: String(localized: "Update Listing Photos"),
+            description: String(localized: "Properties with refreshed photos see 15% more views. Keep your listing fresh."),
             impact: "+\(settings.currencySymbol)320",
             impactType: .revenue,
             priceComparison: nil
@@ -281,7 +298,7 @@ struct SmartActionsView: View {
             HStack(spacing: 8) {
                 ForEach(ActionFilter.allCases, id: \.self) { filter in
                     FilterPill(
-                        title: filter.rawValue,
+                        title: filter.displayName,
                         isSelected: selectedFilter == filter
                     ) {
                         withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
@@ -442,7 +459,7 @@ private struct ActionCard: View {
                 VStack(alignment: .leading, spacing: 6) {
                     // Priority badge + title
                     HStack(spacing: 6) {
-                        Text(action.priority.rawValue)
+                        Text(action.priority.displayName)
                             .font(.system(size: 9, weight: .bold))
                             .foregroundStyle(action.priority.textColor)
                             .padding(.horizontal, 6)

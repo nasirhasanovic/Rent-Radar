@@ -6,6 +6,15 @@ enum BlockReason: String, CaseIterable {
     case renovation = "Renovation"
     case other = "Other"
 
+    var displayName: String {
+        switch self {
+        case .personal: return String(localized: "Personal use")
+        case .maintenance: return String(localized: "Maintenance")
+        case .renovation: return String(localized: "Renovation")
+        case .other: return String(localized: "Other")
+        }
+    }
+
     var emoji: String {
         switch self {
         case .personal: return "🏠"
@@ -252,7 +261,7 @@ struct BlockDatesSheet: View {
             HStack(spacing: 6) {
                 Text(reason.emoji)
                     .font(.system(size: 14))
-                Text(reason.rawValue)
+                Text(reason.displayName)
                     .font(.system(size: 13, weight: selectedReason == reason ? .semibold : .medium))
                     .foregroundStyle(selectedReason == reason ? .white : AppColors.textPrimary)
             }

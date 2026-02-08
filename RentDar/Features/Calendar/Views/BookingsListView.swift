@@ -8,6 +8,15 @@ enum BookingFilter: String, CaseIterable {
     case current = "Current"
     case past = "Past"
     case cancelled = "Cancelled"
+
+    var displayName: String {
+        switch self {
+        case .upcoming: return String(localized: "Upcoming")
+        case .current: return String(localized: "Current")
+        case .past: return String(localized: "Past")
+        case .cancelled: return String(localized: "Cancelled")
+        }
+    }
 }
 
 // MARK: - Booking Status
@@ -17,9 +26,9 @@ enum BookingStatus {
 
     var label: String {
         switch self {
-        case .confirmed: return "Confirmed"
-        case .pending: return "Pending"
-        case .checkedIn: return "Checked In"
+        case .confirmed: return String(localized: "Confirmed")
+        case .pending: return String(localized: "Pending")
+        case .checkedIn: return String(localized: "Checked In")
         }
     }
 
@@ -97,7 +106,7 @@ struct BookingsListView: View {
 
         guard selectedFilter == .upcoming else {
             if bookings.isEmpty { return [] }
-            return [BookingDateGroup(id: "all", title: selectedFilter.rawValue, bookings: bookings)]
+            return [BookingDateGroup(id: "all", title: selectedFilter.displayName, bookings: bookings)]
         }
 
         var thisWeek: [TransactionEntity] = []
@@ -126,10 +135,10 @@ struct BookingsListView: View {
         }
 
         var groups: [BookingDateGroup] = []
-        if !thisWeek.isEmpty { groups.append(BookingDateGroup(id: "this-week", title: "This Week", bookings: thisWeek)) }
-        if !nextWeek.isEmpty { groups.append(BookingDateGroup(id: "next-week", title: "Next Week", bookings: nextWeek)) }
-        if !laterThisMonth.isEmpty { groups.append(BookingDateGroup(id: "later", title: "Later This Month", bookings: laterThisMonth)) }
-        if !future.isEmpty { groups.append(BookingDateGroup(id: "future", title: "Upcoming", bookings: future)) }
+        if !thisWeek.isEmpty { groups.append(BookingDateGroup(id: "this-week", title: String(localized: "This Week"), bookings: thisWeek)) }
+        if !nextWeek.isEmpty { groups.append(BookingDateGroup(id: "next-week", title: String(localized: "Next Week"), bookings: nextWeek)) }
+        if !laterThisMonth.isEmpty { groups.append(BookingDateGroup(id: "later", title: String(localized: "Later This Month"), bookings: laterThisMonth)) }
+        if !future.isEmpty { groups.append(BookingDateGroup(id: "future", title: String(localized: "Upcoming"), bookings: future)) }
         return groups
     }
 
@@ -169,7 +178,7 @@ struct BookingsListView: View {
                                 selectedFilter = filter
                             }
                         } label: {
-                            Text(filter.rawValue)
+                            Text(filter.displayName)
                                 .font(.system(size: 13, weight: .semibold))
                                 .foregroundStyle(selectedFilter == filter ? .white : AppColors.textTertiary)
                                 .padding(.horizontal, 16)
@@ -298,19 +307,19 @@ struct BookingsListView: View {
 
     private var emptyTitle: String {
         switch selectedFilter {
-        case .upcoming: return "No upcoming bookings"
-        case .current: return "No current bookings"
-        case .past: return "No past bookings"
-        case .cancelled: return "No cancelled bookings"
+        case .upcoming: return String(localized: "No upcoming bookings")
+        case .current: return String(localized: "No current bookings")
+        case .past: return String(localized: "No past bookings")
+        case .cancelled: return String(localized: "No cancelled bookings")
         }
     }
 
     private var emptyDescription: String {
         switch selectedFilter {
-        case .upcoming: return "You don't have any upcoming bookings.\nThey'll appear here when guests book."
-        case .current: return "No guests are currently checked in.\nActive stays will show here."
-        case .past: return "You don't have any completed bookings\nyet. They'll appear here once guests check out."
-        case .cancelled: return "No cancelled bookings to show.\nThat's a good thing!"
+        case .upcoming: return String(localized: "You don't have any upcoming bookings.\nThey'll appear here when guests book.")
+        case .current: return String(localized: "No guests are currently checked in.\nActive stays will show here.")
+        case .past: return String(localized: "You don't have any completed bookings\nyet. They'll appear here once guests check out.")
+        case .cancelled: return String(localized: "No cancelled bookings to show.\nThat's a good thing!")
         }
     }
 
@@ -360,8 +369,8 @@ private struct BookingListCard: View {
     private var platform: String { booking.platform ?? "Direct" }
     private var platformColor: Color { CalendarViewModel.platformColor(for: platform) }
     private var platformTintedBg: Color { CalendarViewModel.platformTintedBg(for: platform) }
-    private var propertyName: String { booking.property?.displayName ?? "Unknown" }
-    private var guestName: String { booking.name ?? "Guest" }
+    private var propertyName: String { booking.property?.displayName ?? String(localized: "Unknown") }
+    private var guestName: String { booking.name ?? String(localized: "Guest") }
     private var checkIn: Date { booking.date ?? Date() }
     private var nightCount: Int { booking.nights }
     private var city: String { booking.property?.shortAddress ?? "" }

@@ -7,7 +7,7 @@ struct CalendarBookingCard: View {
     let platformTintedBg: Color
 
     private var platform: String { booking.platform ?? "Direct" }
-    private var guestName: String { booking.name ?? "Guest" }
+    private var guestName: String { booking.name ?? String(localized: "Guest") }
     private var amount: Double { booking.amount }
     private var checkInDate: Date { booking.date ?? Date() }
     private var nightCount: Int { booking.nights }

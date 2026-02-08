@@ -329,15 +329,15 @@ struct ExpenseAnalysisView: View {
         var text = AttributedString()
 
         if percentChange > 0 {
-            text += AttributedString("Expenses are up ")
-            var amount = AttributedString("\(settings.currencySymbol)\(changeAmount) vs last month")
+            text += AttributedString(String(localized: "Expenses are up "))
+            var amount = AttributedString("\(settings.currencySymbol)\(changeAmount) " + String(localized: "vs last month"))
             amount.foregroundColor = UIColor(AppColors.error)
             amount.font = .systemFont(ofSize: 13, weight: .bold)
             text += amount
             text += AttributedString(". ")
         } else if percentChange < 0 {
-            text += AttributedString("Expenses are down ")
-            var amount = AttributedString("\(settings.currencySymbol)\(changeAmount) vs last month")
+            text += AttributedString(String(localized: "Expenses are down "))
+            var amount = AttributedString("\(settings.currencySymbol)\(changeAmount) " + String(localized: "vs last month"))
             amount.foregroundColor = UIColor(Color(hex: "10B981"))
             amount.font = .systemFont(ofSize: 13, weight: .bold)
             text += amount
@@ -345,12 +345,12 @@ struct ExpenseAnalysisView: View {
         }
 
         if let biggest = biggest {
-            text += AttributedString("\(biggest.name) is the biggest driver (\(biggest.percent)%). ")
+            text += AttributedString(String(localized: "\(biggest.name) is the biggest driver (\(biggest.percent)%). "))
         }
 
         let potentialSavings = Int(totalCurrentMonth * 0.15)
-        text += AttributedString("Optimizing could save ")
-        var savings = AttributedString("\(settings.currencySymbol)\(potentialSavings)/month")
+        text += AttributedString(String(localized: "Optimizing could save "))
+        var savings = AttributedString("\(settings.currencySymbol)\(potentialSavings)/" + String(localized: "month"))
         savings.foregroundColor = UIColor(Color(hex: "10B981"))
         savings.font = .systemFont(ofSize: 13, weight: .bold)
         text += savings
@@ -408,12 +408,12 @@ struct ExpenseAnalysisView: View {
 
     private func suggestionFor(category: String) -> String {
         switch category.lowercased() {
-        case "cleaning": return "Switch to bi-weekly deep cleans + turnover-only cleans between guests."
-        case "marketing": return "Focus on direct bookings to reduce platform fees."
-        case "supplies": return "Buy in bulk from wholesale suppliers for better rates."
-        case "repairs": return "Schedule preventive maintenance to avoid costly repairs."
-        case "utilities": return "Install smart thermostats to optimize energy usage."
-        default: return "Review and optimize spending in this category."
+        case "cleaning": return String(localized: "Switch to bi-weekly deep cleans + turnover-only cleans between guests.")
+        case "marketing": return String(localized: "Focus on direct bookings to reduce platform fees.")
+        case "supplies": return String(localized: "Buy in bulk from wholesale suppliers for better rates.")
+        case "repairs": return String(localized: "Schedule preventive maintenance to avoid costly repairs.")
+        case "utilities": return String(localized: "Install smart thermostats to optimize energy usage.")
+        default: return String(localized: "Review and optimize spending in this category.")
         }
     }
 
@@ -450,17 +450,17 @@ struct ExpenseAnalysisView: View {
         switch category.lowercased() {
         case "cleaning":
             let avg = count > 0 ? Int(categoryExpenses.reduce(0) { $0 + $1.amount } / Double(count)) : 0
-            return "\(count) turnovers · \(settings.currencySymbol)\(avg) avg per turnover"
+            return String(localized: "\(count) turnovers · \(settings.currencySymbol)\(avg) avg per turnover")
         case "marketing":
-            return "Listing ads, photos"
+            return String(localized: "Listing ads, photos")
         case "supplies":
-            return "Toiletries, linens"
+            return String(localized: "Toiletries, linens")
         case "repairs":
-            return "Maintenance & repairs"
+            return String(localized: "Maintenance & repairs")
         case "utilities":
-            return "Electricity, water, internet"
+            return String(localized: "Electricity, water, internet")
         default:
-            return "\(count) transactions"
+            return String(localized: "\(count) transactions")
         }
     }
 

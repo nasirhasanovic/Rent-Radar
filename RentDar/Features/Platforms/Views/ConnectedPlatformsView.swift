@@ -269,19 +269,23 @@ struct PlatformConnection: Identifiable {
     var lastSyncText: String {
         let interval = Date().timeIntervalSince(lastSyncDate)
         if interval < 60 {
-            return "Just now"
+            return String(localized: "Just now")
         } else if interval < 3600 {
-            return "\(Int(interval / 60)) min ago"
+            let mins = Int(interval / 60)
+            return String(localized: "\(mins) min ago")
         } else {
-            return "\(Int(interval / 3600))h \(Int((interval.truncatingRemainder(dividingBy: 3600)) / 60))m ago"
+            let hours = Int(interval / 3600)
+            let mins = Int((interval.truncatingRemainder(dividingBy: 3600)) / 60)
+            return String(localized: "\(hours)h \(mins)m ago")
         }
     }
 
     var syncFrequencyText: String {
         if syncFrequency < 60 {
-            return "\(syncFrequency)m"
+            return String(localized: "\(syncFrequency)m")
         } else {
-            return "\(syncFrequency / 60)h"
+            let hours = syncFrequency / 60
+            return String(localized: "\(hours)h")
         }
     }
 }
