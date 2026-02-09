@@ -183,7 +183,7 @@ struct ProfileView: View {
                 ProfileRow(
                     profileIcon: ProfileIcon(asset: "profile_moon", bg: Color(hex: "F97316")),
                     title: "Appearance",
-                    subtitle: settings.theme.rawValue
+                    subtitle: settings.theme.displayName
                 ) { showAppearance = true }
             }
 

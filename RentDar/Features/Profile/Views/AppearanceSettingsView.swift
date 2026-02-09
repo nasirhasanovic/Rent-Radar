@@ -5,6 +5,14 @@ enum AppTheme: String, CaseIterable {
     case dark = "Dark"
     case auto = "Auto"
 
+    var displayName: String {
+        switch self {
+        case .light: return String(localized: "Light")
+        case .dark: return String(localized: "Dark")
+        case .auto: return String(localized: "Auto")
+        }
+    }
+
     var subtitle: String {
         switch self {
         case .light: return String(localized: "Always light")
@@ -148,7 +156,7 @@ private struct ThemeCard: View {
                     .frame(height: 80)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
 
-                Text(theme.rawValue)
+                Text(theme.displayName)
                     .font(AppTypography.body)
                     .fontWeight(.medium)
                     .foregroundStyle(AppColors.textPrimary)

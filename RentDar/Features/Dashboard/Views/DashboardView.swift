@@ -457,7 +457,7 @@ struct DashboardView: View {
         HStack(spacing: 8) {
             ForEach(RentalTypeFilter.allCases, id: \.rawValue) { filter in
                 RentalTypeChip(
-                    title: filter.rawValue,
+                    title: filter.displayName,
                     isSelected: viewModel.rentalTypeFilter == filter
                 ) {
                     viewModel.selectRentalType(filter)

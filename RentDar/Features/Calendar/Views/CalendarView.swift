@@ -49,14 +49,14 @@ struct CalendarView: View {
 
     private var blockedDateMessage: String {
         guard let blocked = viewModel?.selectedBlockedDate else {
-            return "Do you want to unblock these dates?"
+            return String(localized: "Do you want to unblock these dates?")
         }
-        let reason = blocked.reason ?? "No reason"
+        let reason = blocked.reason ?? String(localized: "No reason")
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         let start = blocked.startDate.map { formatter.string(from: $0) } ?? "?"
         let end = blocked.endDate.map { formatter.string(from: $0) } ?? "?"
-        return "\(reason)\n\(start) - \(end)\n\nDo you want to unblock these dates?"
+        return "\(reason)\n\(start) - \(end)\n\n" + String(localized: "Do you want to unblock these dates?")
     }
 
     // MARK: - Main Content

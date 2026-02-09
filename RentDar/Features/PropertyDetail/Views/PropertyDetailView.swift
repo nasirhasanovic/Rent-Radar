@@ -200,7 +200,7 @@ struct PropertyDetailView: View {
                         viewModel.selectedTab = tab
                     }
                 } label: {
-                    Text(tab.rawValue)
+                    Text(tab.displayName)
                         .font(.system(size: 13, weight: viewModel.selectedTab == tab ? .semibold : .medium))
                         .foregroundStyle(viewModel.selectedTab == tab ? .white : AppColors.textTertiary)
                         .frame(maxWidth: .infinity)

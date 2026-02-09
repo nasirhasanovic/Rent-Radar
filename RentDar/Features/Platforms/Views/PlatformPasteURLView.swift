@@ -230,11 +230,11 @@ struct PlatformPasteURLView: View {
 
     private var syncFrequencyText: String {
         switch viewModel.syncFrequency {
-        case 15: return "15 min"
-        case 30: return "30 min"
-        case 60: return "1 hour"
-        case 180: return "3 hours"
-        default: return "\(viewModel.syncFrequency) min"
+        case 15: return String(localized: "15 min")
+        case 30: return String(localized: "30 min")
+        case 60: return String(localized: "1 hour")
+        case 180: return String(localized: "3 hours")
+        default: return String(localized: "\(viewModel.syncFrequency) min")
         }
     }
 

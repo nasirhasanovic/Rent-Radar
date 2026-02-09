@@ -291,10 +291,10 @@ private struct PlatformCard: View {
 
     private var platformDescription: String {
         switch platform {
-        case .airbnb: return "Sync your Airbnb bookings & blocked dates"
-        case .booking: return "Import reservations from Booking.com"
-        case .vrbo: return "Connect your VRBO/Vrbo calendar"
-        case .direct: return "Add direct bookings manually"
+        case .airbnb: return String(localized: "Sync your Airbnb bookings & blocked dates")
+        case .booking: return String(localized: "Import reservations from Booking.com")
+        case .vrbo: return String(localized: "Connect your VRBO/Vrbo calendar")
+        case .direct: return String(localized: "Add direct bookings manually")
         }
     }
 }

@@ -336,7 +336,7 @@ private struct PropertyInsightCard: View {
                             .font(.system(size: 15, weight: .semibold))
                             .foregroundStyle(AppColors.textPrimary)
 
-                        Text(insight.badge.rawValue)
+                        Text(insight.badge.displayName)
                             .font(.system(size: 10, weight: .bold))
                             .foregroundStyle(insight.badge.color)
                             .padding(.horizontal, 8)
