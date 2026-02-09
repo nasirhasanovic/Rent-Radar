@@ -72,12 +72,22 @@ final class AppSettings {
     private init() {
         self.currencyCode = UserDefaults.standard.string(forKey: "app_currency") ?? "USD"
         self.themeRaw = UserDefaults.standard.string(forKey: "app_theme") ?? AppTheme.light.rawValue
-        self.languageCode = UserDefaults.standard.string(forKey: "app_language") ?? "en"
+        self.languageCode = UserDefaults.standard.string(forKey: "app_language") ?? Self.defaultLanguageCode
         self.userName = UserDefaults.standard.string(forKey: "user_name") ?? ""
         self.userEmail = UserDefaults.standard.string(forKey: "user_email") ?? ""
         self.userPhone = UserDefaults.standard.string(forKey: "user_phone") ?? ""
         self.businessName = UserDefaults.standard.string(forKey: "business_name") ?? ""
         self.userLocation = UserDefaults.standard.string(forKey: "user_location") ?? ""
+    }
+
+    private static var defaultLanguageCode: String {
+        let deviceLanguage = Locale.current.language.languageCode?.identifier ?? "en"
+        switch deviceLanguage {
+        case "bs", "hr", "sr":
+            return "bs"
+        default:
+            return "en"
+        }
     }
 
     // MARK: - Currency Data
