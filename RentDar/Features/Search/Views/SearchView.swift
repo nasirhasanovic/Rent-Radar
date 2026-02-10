@@ -89,7 +89,7 @@ struct SearchView: View {
             FlowLayout(spacing: 10) {
                 QuickAccessChip(
                     icon: "house.fill",
-                    title: "All Properties",
+                    title: String(localized: "All Properties"),
                     bgColor: Color(hex: "F0FDFA"),
                     borderColor: Color(hex: "D1FAE5"),
                     textColor: AppColors.teal500
@@ -97,7 +97,7 @@ struct SearchView: View {
 
                 QuickAccessChip(
                     icon: "calendar",
-                    title: "Today's Bookings",
+                    title: String(localized: "Today\u{2019}s Bookings"),
                     bgColor: Color(hex: "FFF1F0"),
                     borderColor: Color(hex: "FFE4E6"),
                     textColor: Color(hex: "FF5A5F")
@@ -105,7 +105,7 @@ struct SearchView: View {
 
                 QuickAccessChip(
                     icon: "clock.fill",
-                    title: "Pending Check-ins",
+                    title: String(localized: "Pending Check-ins"),
                     bgColor: Color(hex: "FEF3C7"),
                     borderColor: Color(hex: "FDE68A"),
                     textColor: Color(hex: "D97706")
@@ -113,7 +113,7 @@ struct SearchView: View {
 
                 QuickAccessChip(
                     icon: "star.fill",
-                    title: "Top Earners",
+                    title: String(localized: "Top Earners"),
                     bgColor: Color(hex: "EDE9FE"),
                     borderColor: Color(hex: "DDD6FE"),
                     textColor: Color(hex: "7C3AED")

@@ -152,9 +152,9 @@ struct PropertySuccessView: View {
                     .textCase(.uppercase)
 
                 HStack(spacing: 24) {
-                    NextActionItem(icon: "calendar.badge.plus", title: "Add\nBooking", action: onAddBooking)
-                    NextActionItem(icon: "dollarsign.circle", title: "Record\nIncome", action: onRecordIncome)
-                    NextActionItem(icon: "chart.bar", title: "View\nInsights", action: onViewInsights)
+                    NextActionItem(icon: "calendar.badge.plus", title: String(localized: "Add\nBooking"), action: onAddBooking)
+                    NextActionItem(icon: "dollarsign.circle", title: String(localized: "Record\nIncome"), action: onRecordIncome)
+                    NextActionItem(icon: "chart.bar", title: String(localized: "View\nInsights"), action: onViewInsights)
                 }
             }
             .opacity(hasAppeared ? 1 : 0)
@@ -164,11 +164,11 @@ struct PropertySuccessView: View {
 
             // Buttons
             VStack(spacing: 12) {
-                PrimaryButton(title: "Go to Dashboard") {
+                PrimaryButton(title: String(localized: "Go to Dashboard")) {
                     onGoToDashboard()
                 }
 
-                SecondaryButton(title: "Add Another Property") {
+                SecondaryButton(title: String(localized: "Add Another Property")) {
                     onAddAnother()
                 }
             }

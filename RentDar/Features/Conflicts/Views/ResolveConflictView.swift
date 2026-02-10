@@ -285,14 +285,14 @@ struct ResolveConflictView: View {
                     Text("\(booking.platform) Booking")
                         .font(.system(size: 14, weight: .bold))
                         .foregroundStyle(AppColors.textPrimary)
-                    Text("Booked \(isFirst ? "first" : "second") \u{2022} \(booking.bookedDateString)")
+                    Text("Booked \(isFirst ? String(localized: "first") : String(localized: "second")) \u{2022} \(booking.bookedDateString)")
                         .font(.system(size: 11))
                         .foregroundStyle(AppColors.textTertiary)
                 }
 
                 Spacer()
 
-                Text(isFirst ? "Arrived first" : "Conflicts")
+                Text(isFirst ? String(localized: "Arrived first") : String(localized: "Conflicts"))
                     .font(.system(size: 10, weight: .semibold))
                     .foregroundStyle(isFirst ? platformColor(booking.platform) : Color(hex: "EF4444"))
                     .padding(.horizontal, 8)
@@ -303,10 +303,10 @@ struct ResolveConflictView: View {
 
             // Details grid
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
-                detailCell(label: "Guest", value: booking.guestName)
-                detailCell(label: "Dates", value: booking.dateRangeString)
-                detailCell(label: "Nights", value: "\(booking.nights) nights")
-                detailCell(label: "Status", value: booking.isConfirmed ? "Confirmed" : "Pending", isGreen: booking.isConfirmed)
+                detailCell(label: String(localized: "Guest"), value: booking.guestName)
+                detailCell(label: String(localized: "Dates"), value: booking.dateRangeString)
+                detailCell(label: String(localized: "Nights"), value: "\(booking.nights) \(String(localized: "nights"))")
+                detailCell(label: String(localized: "Status"), value: booking.isConfirmed ? String(localized: "Confirmed") : String(localized: "Pending"), isGreen: booking.isConfirmed)
             }
 
             // Keep button

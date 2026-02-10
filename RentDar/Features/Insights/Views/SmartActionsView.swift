@@ -347,18 +347,18 @@ struct SmartActionsView: View {
                 VStack(spacing: 12) {
                     PlaceholderActionCard(
                         icon: "💰",
-                        title: "Revenue suggestion",
-                        description: "Pricing optimization tips"
+                        title: String(localized: "Revenue suggestion"),
+                        description: String(localized: "Pricing optimization tips")
                     )
                     PlaceholderActionCard(
                         icon: "📉",
-                        title: "Expense saving",
-                        description: "Cost reduction opportunities"
+                        title: String(localized: "Expense saving"),
+                        description: String(localized: "Cost reduction opportunities")
                     )
                     PlaceholderActionCard(
                         icon: "📈",
-                        title: "Growth tip",
-                        description: "Ways to improve performance"
+                        title: String(localized: "Growth tip"),
+                        description: String(localized: "Ways to improve performance")
                     )
                 }
                 .padding(.horizontal, 16)

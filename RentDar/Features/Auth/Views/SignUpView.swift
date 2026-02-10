@@ -179,7 +179,7 @@ struct SignUpView: View {
             }
 
             // Continue
-            SignUpContinueButton(title: "Continue", isDisabled: !viewModel.isEmailValid) {
+            SignUpContinueButton(title: String(localized: "Continue"), isDisabled: !viewModel.isEmailValid) {
                 withAnimation(.easeInOut(duration: 0.25)) { viewModel.goNext() }
             }
             .padding(.top, 24)
@@ -310,7 +310,7 @@ struct SignUpView: View {
                 .padding(.top, 4)
             }
 
-            SignUpContinueButton(title: "Continue", isDisabled: !viewModel.isStep2Valid) {
+            SignUpContinueButton(title: String(localized: "Continue"), isDisabled: !viewModel.isStep2Valid) {
                 withAnimation(.easeInOut(duration: 0.25)) { viewModel.goNext() }
             }
             .padding(.top, 24)
@@ -385,7 +385,7 @@ struct SignUpView: View {
             )
             .padding(.top, 16)
 
-            SignUpContinueButton(title: "Continue", isDisabled: !viewModel.isStep3Valid) {
+            SignUpContinueButton(title: String(localized: "Continue"), isDisabled: !viewModel.isStep3Valid) {
                 withAnimation(.easeInOut(duration: 0.25)) { viewModel.goNext() }
             }
             .padding(.top, 20)
@@ -496,7 +496,7 @@ struct SignUpView: View {
 
             // Create Account button
             SignUpContinueButton(
-                title: viewModel.isLoading ? "Creating Account..." : "Create Account",
+                title: viewModel.isLoading ? String(localized: "Creating Account...") : String(localized: "Create Account"),
                 isDisabled: viewModel.isLoading
             ) {
                 viewModel.createAccount()

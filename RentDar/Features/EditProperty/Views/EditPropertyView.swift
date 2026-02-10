@@ -82,7 +82,7 @@ struct EditPropertyView: View {
             .scrollDismissesKeyboard(.interactively)
 
             PrimaryButton(
-                title: "Save Changes",
+                title: String(localized: "Save Changes"),
                 isDisabled: !viewModel.isFormValid
             ) {
                 viewModel.saveChanges(context: viewContext)
@@ -244,8 +244,8 @@ struct EditPropertyView: View {
             HStack(spacing: 12) {
                 RentalTypeCard(
                     emoji: "\u{1F3D6}\u{FE0F}",
-                    title: "Short-term",
-                    subtitle: "Nightly bookings",
+                    title: String(localized: "Short-term"),
+                    subtitle: String(localized: "Nightly bookings"),
                     isSelected: viewModel.propertyType == .shortTerm
                 ) {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
@@ -255,8 +255,8 @@ struct EditPropertyView: View {
 
                 RentalTypeCard(
                     emoji: "\u{1F3E2}",
-                    title: "Long-term",
-                    subtitle: "Monthly tenants",
+                    title: String(localized: "Long-term"),
+                    subtitle: String(localized: "Monthly tenants"),
                     isSelected: viewModel.propertyType == .longTerm
                 ) {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {

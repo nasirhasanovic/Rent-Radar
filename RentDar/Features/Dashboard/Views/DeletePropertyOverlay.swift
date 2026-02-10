@@ -65,14 +65,14 @@ struct DeletePropertyOverlay: View {
 
                 Spacer().frame(height: 20)
 
-                DangerButton(title: "Yes, Delete Property") {
+                DangerButton(title: String(localized: "Yes, Delete Property")) {
                     onConfirm()
                 }
                 .padding(.horizontal, 20)
 
                 Spacer().frame(height: 12)
 
-                SecondaryButton(title: "Cancel") {
+                SecondaryButton(title: String(localized: "Cancel")) {
                     dismissAndCancel()
                 }
                 .padding(.horizontal, 20)

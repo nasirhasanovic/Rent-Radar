@@ -88,18 +88,18 @@ struct SignUpSuccessView: View {
                 VStack(spacing: 12) {
                     FeatureCard(
                         emoji: "\u{1F3E0}",
-                        title: "Add your first property",
-                        subtitle: "Set up your rental in minutes"
+                        title: String(localized: "Add your first property"),
+                        subtitle: String(localized: "Set up your rental in minutes")
                     )
                     FeatureCard(
                         emoji: "\u{1F4C5}",
-                        title: "Connect your calendar",
-                        subtitle: "Sync with Airbnb, VRBO & more"
+                        title: String(localized: "Connect your calendar"),
+                        subtitle: String(localized: "Sync with Airbnb, VRBO & more")
                     )
                     FeatureCard(
                         emoji: "\u{1F4B3}",
-                        title: "Track your income",
-                        subtitle: "See all earnings in one place"
+                        title: String(localized: "Track your income"),
+                        subtitle: String(localized: "See all earnings in one place")
                     )
                 }
                 .offset(y: showContent ? 0 : 30)

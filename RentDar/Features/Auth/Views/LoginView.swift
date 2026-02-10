@@ -81,7 +81,7 @@ struct LoginView: View {
 
             // Sign In button
             PrimaryButton(
-                title: viewModel.isLoading ? "Signing In..." : "Sign In",
+                title: viewModel.isLoading ? String(localized: "Signing In...") : String(localized: "Sign In"),
                 isDisabled: !viewModel.isFormValid || viewModel.isLoading
             ) {
                 viewModel.signIn(onSuccess: onSignIn)

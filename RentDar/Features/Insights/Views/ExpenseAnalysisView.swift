@@ -577,9 +577,9 @@ struct ExpenseAnalysisView: View {
 
             // Placeholder category cards
             VStack(spacing: 8) {
-                ExpensePlaceholderCard(icon: "🧹", title: "Cleaning")
-                ExpensePlaceholderCard(icon: "🔧", title: "Maintenance")
-                ExpensePlaceholderCard(icon: "📦", title: "Supplies")
+                ExpensePlaceholderCard(icon: "🧹", title: String(localized: "Cleaning"))
+                ExpensePlaceholderCard(icon: "🔧", title: String(localized: "Maintenance"))
+                ExpensePlaceholderCard(icon: "📦", title: String(localized: "Supplies"))
             }
             .frame(width: 280)
         }

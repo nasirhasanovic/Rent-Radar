@@ -163,7 +163,7 @@ struct PropertyDetailView: View {
 
                     VStack(alignment: .leading, spacing: 4) {
                         // Badge
-                        Text("\(property.source.rawValue) \u{2022} \(property.type == .shortTerm ? "Short-term" : "Long-term")")
+                        Text("\(property.source.rawValue) \u{2022} \(property.type == .shortTerm ? String(localized: "Short-term") : String(localized: "Long-term"))")
                             .font(.system(size: 9, weight: .semibold))
                             .foregroundStyle(.white)
                             .padding(.horizontal, 8)

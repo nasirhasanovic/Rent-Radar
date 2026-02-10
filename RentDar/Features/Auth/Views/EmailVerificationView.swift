@@ -136,7 +136,7 @@ struct EmailVerificationView: View {
 
                     // Verify button
                     SignUpContinueButton(
-                        title: viewModel.isVerifying ? "Verifying..." : "Verify Email",
+                        title: viewModel.isVerifying ? String(localized: "Verifying...") : String(localized: "Verify Email"),
                         isDisabled: !viewModel.isCodeComplete || viewModel.isVerifying
                     ) {
                         viewModel.verifyEmail { }

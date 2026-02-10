@@ -342,8 +342,8 @@ struct PropertyInsightsView: View {
 
                 // Checklist
                 VStack(alignment: .leading, spacing: 12) {
-                    DataChecklistItem(title: "Property added", isCompleted: true)
-                    DataChecklistItem(title: "First booking recorded", isCompleted: (insight?.revenue ?? 0) > 0)
+                    DataChecklistItem(title: String(localized: "Property added"), isCompleted: true)
+                    DataChecklistItem(title: String(localized: "First booking recorded"), isCompleted: (insight?.revenue ?? 0) > 0)
                     DataChecklistItem(title: "30 days of data", isCompleted: false)
                 }
                 .frame(width: 280)

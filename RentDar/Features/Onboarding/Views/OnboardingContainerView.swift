@@ -49,7 +49,7 @@ struct OnboardingContainerView: View {
             // Bottom buttons
             VStack(spacing: 12) {
                 if viewModel.isLastPage {
-                    PrimaryButton(title: "Get Started") {
+                    PrimaryButton(title: String(localized: "Get Started")) {
                         onGetStarted()
                     }
                     .transition(.asymmetric(
@@ -57,7 +57,7 @@ struct OnboardingContainerView: View {
                         removal: .move(edge: .leading).combined(with: .opacity)
                     ))
 
-                    SecondaryButton(title: "I already have an account") {
+                    SecondaryButton(title: String(localized: "I already have an account")) {
                         onAlreadyHaveAccount()
                     }
                     .transition(.asymmetric(
@@ -65,7 +65,7 @@ struct OnboardingContainerView: View {
                         removal: .move(edge: .leading).combined(with: .opacity)
                     ))
                 } else {
-                    PrimaryButton(title: "Next") {
+                    PrimaryButton(title: String(localized: "Next")) {
                         viewModel.nextPage()
                     }
                     .transition(.asymmetric(

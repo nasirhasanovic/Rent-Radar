@@ -805,7 +805,7 @@ struct ExportDataView: View {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 if selectedDataTypes.contains(.bookings) {
                     HighlightCard(
-                        title: "Total Bookings",
+                        title: String(localized: "Total Bookings"),
                         value: "\(totalBookings)",
                         subtitle: periodDisplayText,
                         isTeal: true
@@ -814,16 +814,16 @@ struct ExportDataView: View {
 
                 if selectedDataTypes.contains(.income) {
                     HighlightCard(
-                        title: "Total Income",
+                        title: String(localized: "Total Income"),
                         value: "\(AppSettings.shared.currencySymbol)\(totalIncome.formatted())",
-                        subtitle: "\(selectedPropertiesCount) \(selectedPropertiesCount == 1 ? "property" : "properties")",
+                        subtitle: "\(selectedPropertiesCount) \(selectedPropertiesCount == 1 ? String(localized: "property") : String(localized: "properties"))",
                         isTeal: true
                     )
                 }
 
                 if selectedDataTypes.contains(.expenses) {
                     HighlightCard(
-                        title: "Total Expenses",
+                        title: String(localized: "Total Expenses"),
                         value: "\(AppSettings.shared.currencySymbol)\(totalExpenses.formatted())",
                         subtitle: periodDisplayText,
                         isTeal: false
@@ -832,18 +832,18 @@ struct ExportDataView: View {
 
                 if selectedDataTypes.contains(.occupancy) || selectedDataTypes.contains(.bookings) {
                     HighlightCard(
-                        title: "Nights Booked",
+                        title: String(localized: "Nights Booked"),
                         value: "\(totalNights)",
-                        subtitle: selectedPropertiesCount == 1 ? "This property" : "Across all units",
+                        subtitle: selectedPropertiesCount == 1 ? String(localized: "This property") : String(localized: "Across all units"),
                         isTeal: false
                     )
                 }
 
                 if selectedDataTypes.contains(.bookings) || selectedDataTypes.contains(.income) {
                     HighlightCard(
-                        title: "Top Platform",
+                        title: String(localized: "Top Platform"),
                         value: topPlatform,
-                        subtitle: totalBookings > 0 ? "\(topPlatformPercent)% of bookings" : "No bookings",
+                        subtitle: totalBookings > 0 ? "\(topPlatformPercent)% \(String(localized: "of bookings"))" : String(localized: "No bookings"),
                         isTeal: false
                     )
                 }
@@ -1702,13 +1702,13 @@ private struct CustomDateRangeView: View {
 
     private var quickRangeSection: some View {
         HStack(spacing: 8) {
-            QuickRangeChip(title: "Last 7 Days") {
+            QuickRangeChip(title: String(localized: "Last 7 Days")) {
                 setQuickRange(days: 7)
             }
-            QuickRangeChip(title: "Last 30 Days") {
+            QuickRangeChip(title: String(localized: "Last 30 Days")) {
                 setQuickRange(days: 30)
             }
-            QuickRangeChip(title: "Last 90 Days") {
+            QuickRangeChip(title: String(localized: "Last 90 Days")) {
                 setQuickRange(days: 90)
             }
         }

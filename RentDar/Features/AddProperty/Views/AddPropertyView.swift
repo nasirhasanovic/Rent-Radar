@@ -74,7 +74,7 @@ struct AddPropertyView: View {
 
                 // Continue button
                 PrimaryButton(
-                    title: viewModel.currentStep == viewModel.totalSteps ? "Add Property" : "Continue",
+                    title: viewModel.currentStep == viewModel.totalSteps ? String(localized: "Add Property") : String(localized: "Continue"),
                     isDisabled: !isCurrentStepValid
                 ) {
                     if viewModel.currentStep == viewModel.totalSteps {

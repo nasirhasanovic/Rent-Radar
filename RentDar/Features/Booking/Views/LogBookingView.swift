@@ -99,7 +99,7 @@ struct LogBookingView: View {
 
             Spacer()
 
-            Text(hasPropertySelected ? "Draft" : "New")
+            Text(hasPropertySelected ? String(localized: "Draft") : String(localized: "New"))
                 .font(.system(size: 13, weight: .semibold))
                 .foregroundStyle(AppColors.textTertiary)
         }
@@ -161,7 +161,7 @@ struct LogBookingView: View {
                                     Text(property.displayName)
                                         .font(.system(size: 15, weight: .semibold))
                                         .foregroundStyle(AppColors.textPrimary)
-                                    Text("\(property.shortAddress) · \(property.type == .shortTerm ? "Short-term" : "Long-term")")
+                                    Text("\(property.shortAddress) · \(property.type == .shortTerm ? String(localized: "Short-term") : String(localized: "Long-term"))")
                                         .font(.system(size: 12))
                                         .foregroundStyle(AppColors.textTertiary)
                                 }
@@ -218,7 +218,7 @@ struct LogBookingView: View {
                                 Text(property.displayName)
                                     .font(.system(size: 15, weight: .semibold))
                                     .foregroundStyle(AppColors.textPrimary)
-                                Text("\(property.shortAddress) · \(property.type == .shortTerm ? "Short-term" : "Long-term")")
+                                Text("\(property.shortAddress) · \(property.type == .shortTerm ? String(localized: "Short-term") : String(localized: "Long-term"))")
                                     .font(.system(size: 12))
                                     .foregroundStyle(AppColors.textTertiary)
                             }
@@ -281,8 +281,8 @@ struct LogBookingView: View {
     private func propertyStatusBadge(for property: PropertyEntity) -> some View {
         let isBooked = isPropertyBooked(property)
         let statusText = property.type == .shortTerm
-            ? (isBooked ? "Booked" : "Available")
-            : (isBooked ? "Occupied" : "Vacant")
+            ? (isBooked ? String(localized: "Booked") : String(localized: "Available"))
+            : (isBooked ? String(localized: "Occupied") : String(localized: "Vacant"))
         let statusColor = property.type == .shortTerm
             ? (isBooked ? Color(hex: "10B981") : Color(hex: "F59E0B"))
             : (isBooked ? AppColors.info : Color(hex: "F59E0B"))

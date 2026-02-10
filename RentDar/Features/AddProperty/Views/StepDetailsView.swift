@@ -24,8 +24,8 @@ struct StepDetailsView: View {
                     HStack(spacing: 12) {
                         RentalTypeCard(
                             emoji: "🏖️",
-                            title: "Short-term",
-                            subtitle: "Nightly bookings",
+                            title: String(localized: "Short-term"),
+                            subtitle: String(localized: "Nightly bookings"),
                             isSelected: viewModel.propertyType == .shortTerm
                         ) {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
@@ -35,8 +35,8 @@ struct StepDetailsView: View {
 
                         RentalTypeCard(
                             emoji: "🏢",
-                            title: "Long-term",
-                            subtitle: "Monthly tenants",
+                            title: String(localized: "Long-term"),
+                            subtitle: String(localized: "Monthly tenants"),
                             isSelected: viewModel.propertyType == .longTerm
                         ) {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {

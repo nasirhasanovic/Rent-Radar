@@ -120,7 +120,7 @@ struct CalendarView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     CalendarFilterPill(
-                        title: "All Properties",
+                        title: String(localized: "All Properties"),
                         isSelected: vm.selectedProperty == nil
                     ) {
                         vm.selectFilter(nil)

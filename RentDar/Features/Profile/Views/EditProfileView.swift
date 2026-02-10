@@ -308,7 +308,7 @@ private struct PropertiesCountField: View {
                     .foregroundStyle(AppColors.teal500)
                     .frame(width: 16)
 
-                Text("\(count) \(count == 1 ? "Property" : "Properties")")
+                Text("\(count) \(count == 1 ? String(localized: "Property") : String(localized: "Properties"))")
                     .font(.system(size: 15, weight: .semibold))
                     .foregroundStyle(AppColors.teal500)
 

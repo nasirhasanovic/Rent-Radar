@@ -106,7 +106,7 @@ struct ForgotPasswordView: View {
                     viewModel.sendResetCode { }
                 } label: {
                     HStack {
-                        Text(viewModel.isLoading ? "Sending..." : "Send Reset Code")
+                        Text(viewModel.isLoading ? String(localized: "Sending...") : String(localized: "Send Reset Code"))
                             .font(.system(size: 16, weight: .semibold))
                         if !viewModel.isLoading {
                             Text("\u{2192}")
@@ -240,7 +240,7 @@ struct ForgotPasswordView: View {
                 viewModel.verifyCode { }
             } label: {
                 HStack {
-                    Text(viewModel.isLoading ? "Verifying..." : "Verify")
+                    Text(viewModel.isLoading ? String(localized: "Verifying...") : String(localized: "Verify"))
                     if !viewModel.isLoading {
                         Text("\u{2192}")
                     }
@@ -353,7 +353,7 @@ struct ForgotPasswordView: View {
                 viewModel.resetPassword { }
             } label: {
                 HStack {
-                    Text(viewModel.isLoading ? "Resetting..." : "Reset Password")
+                    Text(viewModel.isLoading ? String(localized: "Resetting...") : String(localized: "Reset Password"))
                     if !viewModel.isLoading {
                         Text("\u{2192}")
                     }
@@ -431,8 +431,8 @@ struct ForgotPasswordView: View {
 
             // Tip cards
             VStack(spacing: 12) {
-                SuccessTipCard(icon: "\u{1F510}", title: "Keep it Secure", description: "Don't share your password with anyone")
-                SuccessTipCard(icon: "\u{1F3E0}", title: "Manage Properties", description: "Access all your rentals securely")
+                SuccessTipCard(icon: "\u{1F510}", title: String(localized: "Keep it Secure"), description: String(localized: "Don\u{2019}t share your password with anyone"))
+                SuccessTipCard(icon: "\u{1F3E0}", title: String(localized: "Manage Properties"), description: String(localized: "Access all your rentals securely"))
             }
             .padding(.top, 40)
             .padding(.horizontal, 24)

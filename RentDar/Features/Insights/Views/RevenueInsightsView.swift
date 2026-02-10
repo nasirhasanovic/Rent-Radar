@@ -380,8 +380,8 @@ struct RevenueInsightsView: View {
 
             // Weekend Rate Card
             PricingSuggestionCard(
-                title: "Weekend Rate",
-                subtitle: "Fri–Sun nights",
+                title: String(localized: "Weekend Rate"),
+                subtitle: String(localized: "Fri–Sun nights"),
                 currentPrice: Int(property.nightlyRate),
                 suggestedPrice: Int(property.nightlyRate * 1.15),
                 estimatedImpact: Int(property.nightlyRate * 0.15 * 8), // ~8 weekend nights
@@ -390,9 +390,9 @@ struct RevenueInsightsView: View {
 
             // Gap Pricing Card
             GapPricingCard(
-                title: "Gap Pricing",
+                title: String(localized: "Gap Pricing"),
                 dateRange: gapDateRange,
-                subtitle: "Empty nights between bookings",
+                subtitle: String(localized: "Empty nights between bookings"),
                 currentPrice: Int(property.nightlyRate),
                 suggestedPrice: Int(property.nightlyRate * 0.85)
             )

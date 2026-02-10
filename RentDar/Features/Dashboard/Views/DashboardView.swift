@@ -326,7 +326,7 @@ struct DashboardView: View {
         HStack(spacing: 10) {
             // Revenue card
             DashboardStatCard(
-                title: "Revenue",
+                title: String(localized: "Revenue"),
                 value: viewModel.formattedRevenue(filtered),
                 trend: viewModel.revenueTrend(filtered),
                 showTrend: true
@@ -334,14 +334,14 @@ struct DashboardView: View {
 
             // Occupancy card
             DashboardStatCard(
-                title: "Occupancy",
+                title: String(localized: "Occupancy"),
                 value: "\(viewModel.occupancyRate(filtered))%",
                 occupancyPercent: viewModel.occupancyRate(filtered)
             )
 
             // Bookings card
             DashboardStatCard(
-                title: "Bookings",
+                title: String(localized: "Bookings"),
                 value: "\(viewModel.totalBookings(filtered))",
                 subtitle: "\(viewModel.totalNights(filtered)) nights"
             )
@@ -358,8 +358,8 @@ struct DashboardView: View {
             QuickActionCard(
                 icon: "plus",
                 iconGradient: [Color(hex: "0D9488"), Color(hex: "2DD4A8")],
-                title: "Add Property",
-                subtitle: "New listing"
+                title: String(localized: "Add Property"),
+                subtitle: String(localized: "New listing")
             ) {
                 activeCover = .addProperty
             }
@@ -368,8 +368,8 @@ struct DashboardView: View {
             QuickActionCard(
                 icon: "chart.line.uptrend.xyaxis",
                 iconGradient: [Color(hex: "3B82F6"), Color(hex: "60A5FA")],
-                title: "Log Booking",
-                subtitle: "Record stay"
+                title: String(localized: "Log Booking"),
+                subtitle: String(localized: "Record stay")
             ) {
                 activeCover = .addBooking
             }
@@ -474,7 +474,7 @@ struct DashboardView: View {
         return HStack(spacing: 6) {
             // All
             StatusFilterChip(
-                title: "All",
+                title: String(localized: "All"),
                 count: viewModel.shortTermCount(allProperties),
                 dotColor: Color(hex: "0D9488"),
                 isSelected: viewModel.shortTermStatusFilter == .all
@@ -484,7 +484,7 @@ struct DashboardView: View {
 
             // Booked
             StatusFilterChip(
-                title: "Booked",
+                title: String(localized: "Booked"),
                 count: viewModel.shortTermBookedCount(allProperties),
                 dotColor: Color(hex: "10B981"),
                 isSelected: viewModel.shortTermStatusFilter == .booked
@@ -494,7 +494,7 @@ struct DashboardView: View {
 
             // Available
             StatusFilterChip(
-                title: "Available",
+                title: String(localized: "Available"),
                 count: viewModel.shortTermAvailableCount(allProperties),
                 dotColor: Color(hex: "F59E0B"),
                 isSelected: viewModel.shortTermStatusFilter == .available
@@ -513,7 +513,7 @@ struct DashboardView: View {
         return HStack(spacing: 6) {
             // All
             StatusFilterChip(
-                title: "All",
+                title: String(localized: "All"),
                 count: viewModel.longTermCount(allProperties),
                 dotColor: Color(hex: "0D9488"),
                 isSelected: viewModel.longTermStatusFilter == .all
@@ -523,7 +523,7 @@ struct DashboardView: View {
 
             // Occupied
             StatusFilterChip(
-                title: "Occupied",
+                title: String(localized: "Occupied"),
                 count: viewModel.longTermOccupiedCount(allProperties),
                 dotColor: Color(hex: "10B981"),
                 isSelected: viewModel.longTermStatusFilter == .occupied
@@ -533,7 +533,7 @@ struct DashboardView: View {
 
             // Vacant
             StatusFilterChip(
-                title: "Vacant",
+                title: String(localized: "Vacant"),
                 count: viewModel.longTermVacantCount(allProperties),
                 dotColor: Color(hex: "F59E0B"),
                 isSelected: viewModel.longTermStatusFilter == .vacant
@@ -960,7 +960,7 @@ private struct CompactPropertyCard: View {
                                 Circle()
                                     .fill(isBooked ? Color(hex: "10B981") : Color(hex: "F59E0B"))
                                     .frame(width: 6, height: 6)
-                                Text(isBooked ? "Booked" : "Available")
+                                Text(isBooked ? String(localized: "Booked") : String(localized: "Available"))
                                     .font(.system(size: 10, weight: .semibold))
                                     .foregroundStyle(isBooked ? Color(hex: "10B981") : Color(hex: "F59E0B"))
                             }

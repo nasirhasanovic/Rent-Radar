@@ -163,10 +163,10 @@ struct ProfileView: View {
     private var settingsSections: some View {
         VStack(spacing: 0) {
             // PREFERENCES
-            ProfileSection(title: "PREFERENCES") {
+            ProfileSection(title: String(localized: "PREFERENCES")) {
                 ProfileRow(
                     profileIcon: ProfileIcon(systemName: "dollarsign", color: AppColors.textSecondary, bg: AppColors.surface),
-                    title: "Default Currency",
+                    title: String(localized: "Default Currency"),
                     subtitle: settings.currencyDisplay
                 ) { showCurrency = true }
 
@@ -174,7 +174,7 @@ struct ProfileView: View {
 
                 ProfileRow(
                     profileIcon: ProfileIcon(systemName: "globe", color: AppColors.textSecondary, bg: AppColors.surface),
-                    title: "Language",
+                    title: String(localized: "Language"),
                     subtitle: settings.languageDisplayName
                 ) { showLanguage = true }
 
@@ -182,17 +182,17 @@ struct ProfileView: View {
 
                 ProfileRow(
                     profileIcon: ProfileIcon(asset: "profile_moon", bg: Color(hex: "F97316")),
-                    title: "Appearance",
+                    title: String(localized: "Appearance"),
                     subtitle: settings.theme.displayName
                 ) { showAppearance = true }
             }
 
             // NOTIFICATIONS
-            ProfileSection(title: "NOTIFICATIONS") {
+            ProfileSection(title: String(localized: "NOTIFICATIONS")) {
                 ProfileToggleRow(
                     profileIcon: ProfileIcon(asset: "profile_bell", bg: Color(hex: "FFDEAD")),
-                    title: "Push Notifications",
-                    subtitle: "Bookings, Payments",
+                    title: String(localized: "Push Notifications"),
+                    subtitle: String(localized: "Bookings, Payments"),
                     isOn: $pushNotificationsEnabled
                 )
 
@@ -200,41 +200,41 @@ struct ProfileView: View {
 
                 ProfileRow(
                     profileIcon: ProfileIcon(systemName: "envelope.fill", bg: Color(hex: "8B5CF6")),
-                    title: "Email Reports",
-                    subtitle: "Weekly summary"
+                    title: String(localized: "Email Reports"),
+                    subtitle: String(localized: "Weekly summary")
                 )
             }
 
             // DATA & SECURITY
-            ProfileSection(title: "DATA & SECURITY") {
+            ProfileSection(title: String(localized: "DATA & SECURITY")) {
                 ProfileRow(
                     profileIcon: ProfileIcon(systemName: "square.and.arrow.up.fill", bg: Color(hex: "06B6D4")),
-                    title: "Export Data",
-                    subtitle: "Reports & tax documents"
+                    title: String(localized: "Export Data"),
+                    subtitle: String(localized: "Reports & tax documents")
                 ) { showExportData = true }
 
                 Divider().padding(.leading, 68)
 
                 ProfileRow(
                     profileIcon: ProfileIcon(systemName: "lock.fill", bg: Color(hex: "F59E0B")),
-                    title: "Privacy & Security",
-                    subtitle: "Password, 2FA"
+                    title: String(localized: "Privacy & Security"),
+                    subtitle: String(localized: "Password, 2FA")
                 )
             }
 
             // SUPPORT
-            ProfileSection(title: "SUPPORT") {
+            ProfileSection(title: String(localized: "SUPPORT")) {
                 ProfileRow(
                     profileIcon: ProfileIcon(systemName: "questionmark", bg: Color(hex: "EF4444")),
-                    title: "Help Center",
-                    subtitle: "FAQs & tutorials"
+                    title: String(localized: "Help Center"),
+                    subtitle: String(localized: "FAQs & tutorials")
                 )
 
                 Divider().padding(.leading, 68)
 
                 ProfileRow(
                     profileIcon: ProfileIcon(asset: "profile_door", bg: Color(hex: "EBF8FF")),
-                    title: "Log Out",
+                    title: String(localized: "Log Out"),
                     subtitle: nil
                 ) { showLogoutConfirmation = true }
             }
