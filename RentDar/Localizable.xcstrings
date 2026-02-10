@@ -9613,6 +9613,490 @@
           }
         }
       }
+    },
+    "4-digit code": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4-cifreni kod"
+          }
+        }
+      }
+    },
+    "6-digit code": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6-cifreni kod"
+          }
+        }
+      }
+    },
+    "Creating Account...": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kreiranje računa..."
+          }
+        }
+      }
+    },
+    "Verify Email": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verifikuj email"
+          }
+        }
+      }
+    },
+    "first": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "prvi"
+          }
+        }
+      }
+    },
+    "second": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "drugi"
+          }
+        }
+      }
+    },
+    "Dates": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datumi"
+          }
+        }
+      }
+    },
+    "property": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nekretnina"
+          }
+        }
+      }
+    },
+    "properties": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nekretnine"
+          }
+        }
+      }
+    },
+    "This property": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ova nekretnina"
+          }
+        }
+      }
+    },
+    "Across all units": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kroz sve jedinice"
+          }
+        }
+      }
+    },
+    "of bookings": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "rezervacija"
+          }
+        }
+      }
+    },
+    "No bookings": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nema rezervacija"
+          }
+        }
+      }
+    },
+    "Total Bookings": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukupno rezervacija"
+          }
+        }
+      }
+    },
+    "Top Platform": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Najbolja platforma"
+          }
+        }
+      }
+    },
+    "New listing": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novi oglas"
+          }
+        }
+      }
+    },
+    "Record stay": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evidentiraj boravak"
+          }
+        }
+      }
+    },
+    "Set up your rental in minutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Postavite iznajmljivanje za nekoliko minuta"
+          }
+        }
+      }
+    },
+    "Connect your calendar": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Povežite svoj kalendar"
+          }
+        }
+      }
+    },
+    "Sync with Airbnb, VRBO & more": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinhronizujte sa Airbnb, VRBO i više"
+          }
+        }
+      }
+    },
+    "Track your income": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pratite svoje prihode"
+          }
+        }
+      }
+    },
+    "See all earnings in one place": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pogledajte svu zaradu na jednom mjestu"
+          }
+        }
+      }
+    },
+    "Weekend Rate": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vikend cijena"
+          }
+        }
+      }
+    },
+    "Fri–Sun nights": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pet–Ned noći"
+          }
+        }
+      }
+    },
+    "Gap Pricing": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cijena za praznine"
+          }
+        }
+      }
+    },
+    "Empty nights between bookings": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prazne noći između rezervacija"
+          }
+        }
+      }
+    },
+    "Today’s Bookings": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Današnje rezervacije"
+          }
+        }
+      }
+    },
+    "Pending Check-ins": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prijave na čekanju"
+          }
+        }
+      }
+    },
+    "Top Earners": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Najviša zarada"
+          }
+        }
+      }
+    },
+    "Keep it Secure": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čuvajte sigurnost"
+          }
+        }
+      }
+    },
+    "Don’t share your password with anyone": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne dijelite svoju lozinku ni sa kim"
+          }
+        }
+      }
+    },
+    "Manage Properties": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upravljajte nekretninama"
+          }
+        }
+      }
+    },
+    "Access all your rentals securely": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pristupite svim iznajmljivanjima sigurno"
+          }
+        }
+      }
+    },
+    "Property added": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nekretnina dodana"
+          }
+        }
+      }
+    },
+    "First booking recorded": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prva rezervacija evidentirana"
+          }
+        }
+      }
+    },
+    "Revenue suggestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prijedlog za prihode"
+          }
+        }
+      }
+    },
+    "Pricing optimization tips": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savjeti za optimizaciju cijena"
+          }
+        }
+      }
+    },
+    "Expense saving": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ušteda troškova"
+          }
+        }
+      }
+    },
+    "Cost reduction opportunities": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mogućnosti smanjenja troškova"
+          }
+        }
+      }
+    },
+    "Growth tip": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savjet za rast"
+          }
+        }
+      }
+    },
+    "Ways to improve performance": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Načini za poboljšanje performansi"
+          }
+        }
+      }
+    },
+    "Last 7 Days": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadnjih 7 dana"
+          }
+        }
+      }
+    },
+    "Last 30 Days": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadnjih 30 dana"
+          }
+        }
+      }
+    },
+    "Last 90 Days": {
+      "extractionState": "manual",
+      "localizations": {
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadnjih 90 dana"
+          }
+        }
+      }
     }
   },
   "version": "1.1"
